@@ -1,0 +1,57 @@
+---
+import { Image } from "astro:assets";
+
+import fleur from "@/images/fleur-de-lis.svg";
+import logo from "@/images/logo.png";
+import { cn } from "@/lib/utils";
+import { SITE_TITLE, SITE_URL } from "@/lib/consts";
+import { HEADER_LINKS } from "@/lib/navigation";
+
+const links = HEADER_LINKS;
+
+interface Props {
+    currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+---
+
+<div class="flex flex-col items-center gap-4 pt-8">
+    <Image
+        loading={"eager"}
+        src={logo}
+        alt={"Runnymede scouts logo"}
+        quality={100}
+        class="aspect-square"
+    />
+    <h1 class="text-5xl text-center">{SITE_TITLE}</h1>
+    <ul class="flex flex-wrap items-center justify-center gap-4 mx-2">
+        {
+            links &&
+                links.map((link) => (
+                    <li>
+                        <a
+                            class={cn("text-center hover:underline", {
+                                "text-primary font-extrabold":
+                                    link.url == currentPath,
+                            })}
+                            href={link.url}
+                            target={link.target}
+                        >
+                            {link.text}
+                        </a>
+                    </li>
+                ))
+        }
+    </ul>
+</div>
+<div class="pt-6 pb-4">
+    <Image
+        loading={"eager"}
+        src={fleur}
+        alt={"fleur-de-lis"}
+        quality={100}
+        width="32"
+        class="mx-auto"
+    />
+</div>

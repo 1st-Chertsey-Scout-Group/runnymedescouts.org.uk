@@ -1,0 +1,63 @@
+---
+import PageLayout from "@/layouts/page.layout.astro";
+---
+
+<PageLayout title="Contact Runnymede | Get Involved in Scouting Today" description="Get in touch with Runnymede. Whether you have questions about joining, events, or volunteering, our contact page provides all the information you need to reach out and connect with us.">
+    <section class="">
+        <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center">
+                Contact Us
+            </h2>
+            <p
+                class="mb-8 lg:mb-16 font-light text-center sm:text-xl"
+            >
+                If you want to get involved with Scouting as volunteer or gain
+                skills for life as a Squirrel, Beaver, Cub, Scout or Explorer, or if you
+                have any other questions about scouting in Runnymede, get in
+                contact with us!
+            </p>
+            <form action="#" class="flex flex-col gap-8">
+                <div>
+                    <label for="email" class="block mb-2 text-sm font-medium">
+                        Your email
+                    </label>
+                    <input
+                        type="email"
+                        id="email"
+                        class="shadow-sm border bg-input border-input-border text-input-foreground text-sm rounded-lg ring-transparent focus:ring-primary focus:border-primary block w-full p-2.5"
+                        placeholder="name@email.com"
+                        required
+                    />
+                </div>
+                <div>
+                    <label for="subject" class="block mb-2 text-sm font-medium">
+                        Subject
+                    </label>
+                    <input
+                        type="text"
+                        id="subject"
+                        class="block p-3 w-full text-sm bg-input border-input-border text-input-foreground rounded-lg border shadow-sm focus:ring-primary focus:border-primary"
+                        placeholder="Let us know how we can help you"
+                        required
+                    />
+                </div>
+                <div class="sm:col-span-2">
+                    <label for="message" class="block mb-2 text-sm font-medium">
+                        Your message
+                    </label>
+                    <textarea
+                        id="message"
+                        rows="6"
+                        class="block p-2.5 w-full text-sm bg-input border-input-border text-input-foreground rounded-lg shadow-sm border focus:ring-primary focus:border-primary"
+                        placeholder="Leave a comment..."></textarea>
+                </div>
+                <button
+                    type="submit"
+                    class="py-3 px-5 text-sm font-medium text-center text-primary-foreground rounded-lg bg-primary hover:bg-primary focus:ring-4 focus:outline-none focus:ring-primary"
+                >
+                    Send message
+                </button>
+            </form>
+        </div>
+    </section>
+</PageLayout>

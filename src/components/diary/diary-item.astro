@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from "astro:content";
+import moment from "moment";
+
+interface Props {
+    event: CollectionEntry<"events">;
+}
+
+const {
+    event: {
+        data: { startDate, title, endDate, details },
+    },
+} = Astro.props;
+---
+
+<div class="flex flex-col gap-2 py-4 sm:gap-6 sm:flex-row sm:items-center">
+    <div class="sm:w-52 text-lg font-normal sm:text-right shrink-0">
+        <div class="inline-block">
+            {moment(startDate).format("Do MMMM YYYY")}
+        </div>
+        {
+            endDate && (
+                <>
+                    <small class="inline-block">to</small>
+                    <div class="inline-block">
+                        {moment(endDate).format("Do MMMM YYYY")}
+                    </div>
+                </>
+            )
+        }
+    </div>
+    <div>
+        <h3 class="text-lg font-semibold">
+            <span>
+                {title}
+            </span>
+        </h3>
+        <p class="text-sm">{details}</p>
+    </div>
+</div>

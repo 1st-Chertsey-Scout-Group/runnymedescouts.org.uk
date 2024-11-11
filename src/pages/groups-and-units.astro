@@ -1,0 +1,64 @@
+---
+import PageLayout from "@/layouts/page.layout.astro";
+import { getCollection } from "astro:content";
+import GroupUnitItem from "@/components/groups-and-units/group-unit-item.astro";
+
+
+const groups = await getCollection("groups");
+const units = await getCollection("units");
+---
+
+<PageLayout title="Local Scout Groups & Units | Join Scouting in Runnymede" description="Discover local scout groups and units within Runnymede. Learn about each group's activities, find meeting times, and connect with leaders to join the scouting adventure in your community.">
+	<section class="">
+		<div
+			class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6"
+		>
+			<div class="mx-auto mb-8 max-w-screen-sm lg:mb-16">
+				<h2 class="mb-4 text-4xl tracking-tight font-extrabold">
+					Our groups and units
+				</h2>
+				<p class="font-light sm:text-xl">
+					We have 11 groups and 3 explorer units dotted around
+					runnymede. Find out more information on each group by
+					visiting their socials!
+				</p>
+			</div>
+			<div
+				class="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+			>
+				{
+					groups &&
+						groups.map(({ data }) => (
+							<GroupUnitItem
+								name={data.name}
+								location={data.location}
+								mapLink={data.mapLink}
+								website={data.website}
+								email={data.email}
+								facebook={data.facebook}
+								image={data.image}
+							/>
+						))
+				}
+			</div>
+			<div
+				class="mt-8 lg:mt-16 grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+			>
+				{
+					units &&
+						units.map(({ data }) => (
+							<GroupUnitItem
+								name={data.name}
+								location={data.location}
+								mapLink={data.mapLink}
+								website={data.website}
+								email={data.email}
+								facebook={data.facebook}
+								image={data.image}
+							/>
+						))
+				}
+			</div>
+		</div>
+	</section>
+</PageLayout>
