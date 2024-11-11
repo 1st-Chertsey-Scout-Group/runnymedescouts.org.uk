@@ -1,7 +1,110 @@
 ---
-import BaseLayout from "@/layouts/base.layout.astro";
+import PageLayout from "@/layouts/page.layout.astro";
+
+import { Image } from "astro:assets";
+
+import homeLeft from "@/images/home-left.jpg";
+import homeRight from "@/images/home-right.jpg";
+
+const stats: { label: string; value: string }[] = [
+	{
+		label: "young people",
+		value: "5,000+",
+	},
+	{
+		label: "volunteers",
+		value: "100+",
+	},
+	{
+		label: "groups",
+		value: "11",
+	},
+];
 ---
 
-<BaseLayout title="Home">
-	<h1>Home</h1>
-</BaseLayout>
+<PageLayout title="Welcome to Runnymede | Explore Scouting Opportunities" description="Welcome to Runnymede! Join us in empowering young people through fun, adventure, and community service. Discover scouting opportunities, learn about upcoming events, and explore how to get involved.">
+	<section>
+		<div
+			class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6"
+		>
+			<div class="font-light sm:text-lg">
+				<h2 class="mb-4 text-4xl tracking-tight font-extrabold">
+					We are a Scout District operating in the County of Surrey.
+				</h2>
+				<p class="mb-4">
+					We change lives by offering 6- to 25-year-olds fun and
+					challenging activities, unique experiences, everyday
+					adventure and the chance to help others so that we make a
+					positive impact in communities.
+				</p>
+				<p class="mb-4">
+					Scouts helps children and young adults reach their full
+					potential. Scouts develop skills including teamwork, time
+					management, leadership, initiative, planning, communication,
+					self-motivation, cultural awareness and commitment. We help
+					young people to get jobs, save lives and even change the
+					world.
+				</p>
+				<p class="mb-4">
+					There are over 500,000 Scouts in the UK alone!
+				</p>
+				<p class="mb-4">
+					We provide a full active programme of activities, find out
+					more by viewing our <a href="/diary">District Diary</a>.
+				</p>
+			</div>
+			<div class="grid grid-cols-2 gap-4 mt-8">
+				<Image
+					loading={"eager"}
+					src={homeLeft}
+					alt={"Runnymede scouts"}
+					width={284}
+					height={458}
+					quality={100}
+					class="w-full rounded-lg"
+				/>
+				<Image
+					loading={"eager"}
+					src={homeRight}
+					alt={"Runnymede scouts"}
+					width={284}
+					height={458}
+					quality={100}
+					class="mt-4 w-full lg:mt-10 rounded-lg"
+				/>
+			</div>
+		</div>
+	</section>
+
+	<section class="">
+		<div
+			class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6"
+		>
+			<h2 class="mb-4 text-3xl tracking-tight font-extrabold lg:text-4xl">
+				Home to scouting in Runnymede
+			</h2>
+			<p class="font-light sm:text-lg sm:px-4 lg:px-32 xl:px-64">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				Maecenas vulputate, purus vel posuere accumsan, eros dolor porta
+				tellus, sit amet ullamcorper magna risus at tellus.
+			</p>
+			<dl
+				class="grid grid-cols-1 gap-4 mx-auto mt-8 max-w-screen-md lg:mt-14 sm:grid-cols-3"
+			>
+				{
+					stats &&
+						stats.map((stat) => (
+							<div class="flex flex-col justify-center items-center">
+								<dt class="mb-2 text-4xl font-extrabold text-primary">
+									{stat.value}
+								</dt>
+								<dd class="text-xl font-normal">
+									{stat.label}
+								</dd>
+							</div>
+						))
+				}
+			</dl>
+		</div>
+	</section>
+</PageLayout>

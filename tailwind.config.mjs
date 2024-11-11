@@ -8,12 +8,35 @@ export default {
 			transparent: "var(--transparent)",
 			inherit: "inherit",
 			white: "var(--white)",
-			background: "hsl(var(--background))",
-			foreground: "hsl(var(--foreground))",
-			primary: {
-				DEFAULT: "hsl(var(--primary))",
-				foreground: "hsl(var(--primary-foreground))",
+			background: "var(--background)",
+			foreground: "var(--foreground)",
+			alternative: {
+				DEFAULT: "var(--alternative)",
+				foreground: "var(--alternative-foreground)",
+				dark: {
+					DEFAULT: "var(--alternative-dark)",
+					foreground: "var(--alternative-dark-foreground)",
+				},
 			},
+
+			primary: {
+				DEFAULT: "var(--primary)",
+				foreground: "var(--primary-foreground)",
+			},
+
+			input: {
+				DEFAULT: "var(--input)",
+				border: "var(--input-border)",
+				foreground: "var(--input-foreground)",
+			},
+
+			icon: {
+				facebook: "var(--icon-facebook)",
+				email: "var(--icon-email)",
+				website: "var(--icon-website)",
+				hover: "var(--icon-hover)"
+			}
+
 		},
 		extend: {
 			fontFamily: {

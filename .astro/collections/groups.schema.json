@@ -7,10 +7,22 @@
         "name": {
           "type": "string"
         },
+        "location": {
+          "type": "string"
+        },
+        "mapLink": {
+          "type": "string"
+        },
         "image": {
           "type": "string"
         },
-        "url": {
+        "facebook": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "email": {
           "type": "string"
         },
         "$schema": {
@@ -19,6 +31,8 @@
       },
       "required": [
         "name",
+        "location",
+        "mapLink",
         "image"
       ],
       "additionalProperties": false

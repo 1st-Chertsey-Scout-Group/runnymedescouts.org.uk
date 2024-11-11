@@ -1,5 +1,9 @@
 {
     "name": "1st Egham",
-    "image": "./db-20210611-15358-8778min.jpg",
-    "url": "http://1stegham.scoutsites.org.uk/"
+    "location": "UNKNOWN",
+    "mapLink": "https://www.google.com/maps?q=1st Egham Scout Group, Surrey",
+    "image": "./Image.png",
+    "email":"",
+    "facebook":"",
+    "website": "http://1stegham.scoutsites.org.uk/"
 }

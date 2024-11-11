@@ -1,0 +1,42 @@
+{
+  "$ref": "#/definitions/units",
+  "definitions": {
+    "units": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "mapLink": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "facebook": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "location",
+        "mapLink",
+        "image"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

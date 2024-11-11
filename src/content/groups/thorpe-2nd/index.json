@@ -1,5 +1,9 @@
 {
     "name": "2nd Thorpe",
-    "image": "./db-20210611-15358-8778min.jpg",
-    "url": ""
+    "location": "UNKNOWN",
+    "mapLink": "https://www.google.com/maps?q=2nd Thorpe Scout Group, Surrey",
+    "image": "./Image.png",
+    "email":"",
+    "facebook":"",
+    "website": ""
 }

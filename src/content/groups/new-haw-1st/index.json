@@ -1,5 +1,9 @@
 {
     "name": "1st New Haw",
-    "image": "./db-20210611-15358-8778min.jpg",
-    "url": "http://www.1stnewhaw.org.uk"
+    "location": "Broomfield Rd, KT15 3BN",
+    "mapLink": "https://maps.app.goo.gl/RerDB8UPvwVnEsSr5",
+    "image": "./Image.png",
+    "email":"",
+    "facebook":"",
+    "website": "http://www.1stnewhaw.org.uk"
 }

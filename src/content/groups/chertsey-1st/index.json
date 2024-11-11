@@ -1,5 +1,9 @@
 {
     "name": "1st Chertsey",
-    "image": "./db-20210611-15358-8778min.jpg",
-    "url": "https://1stchertseyscoutgroup.com/"
+    "location": "Staines Ln, KT16 8PS",
+    "mapLink": "https://maps.app.goo.gl/buqViwWCRUkCaze7A",
+    "image": "./Image.png",
+    "email":"hello@1stchertseyscoutgroup.com",
+    "facebook":"https://www.facebook.com/1stchertseyscoutgroup",
+    "website": "https://1stchertseyscoutgroup.com/"
 }

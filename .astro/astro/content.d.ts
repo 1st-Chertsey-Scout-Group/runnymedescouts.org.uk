@@ -144,11 +144,350 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		"groups": {
-"1st-chertsey/index": {
-	id: "1st-chertsey/index";
+		"events": {
+"2023-1-18-beaver-leader-meeting-postponed": {
+	id: "2023-1-18-beaver-leader-meeting-postponed";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-1-19-cub-leader-meeting": {
+	id: "2023-1-19-cub-leader-meeting";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-1-25-scout-leader-meeting": {
+	id: "2023-1-25-scout-leader-meeting";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-1-27-cub-quiz": {
+	id: "2023-1-27-cub-quiz";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-11-17-scout-night-hikecamp": {
+	id: "2023-11-17-scout-night-hikecamp";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-11-24-cub-night-hike": {
+	id: "2023-11-24-cub-night-hike";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-12-5-cub-christingle": {
+	id: "2023-12-5-cub-christingle";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-12-9-cub-big-day-out": {
+	id: "2023-12-9-cub-big-day-out";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-2-12-county-cub-quiz": {
+	id: "2023-2-12-county-cub-quiz";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-2-3-beaver-movie-night": {
+	id: "2023-2-3-beaver-movie-night";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-3-25-beaver-adventure-day": {
+	id: "2023-3-25-beaver-adventure-day";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-3-4-cub-big-splash": {
+	id: "2023-3-4-cub-big-splash";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-4-23-st-georges-day-parade": {
+	id: "2023-4-23-st-georges-day-parade";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-4-30-cub-cooking-competition": {
+	id: "2023-4-30-cub-cooking-competition";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-5-11-scout-leader-meeting": {
+	id: "2023-5-11-scout-leader-meeting";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-5-14-county-cub-cooking": {
+	id: "2023-5-14-county-cub-cooking";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-5-19-county-scout-expedition-challenge": {
+	id: "2023-5-19-county-scout-expedition-challenge";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-5-27-cub-fishing-competition": {
+	id: "2023-5-27-cub-fishing-competition";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-5-3-cub-leader-meeting": {
+	id: "2023-5-3-cub-leader-meeting";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-6-10-beaver-archery-day": {
+	id: "2023-6-10-beaver-archery-day";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-6-17-scram": {
+	id: "2023-6-17-scram";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-6-30-cub-football-comp": {
+	id: "2023-6-30-cub-football-comp";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-6-30-scout-expedition-camp": {
+	id: "2023-6-30-scout-expedition-camp";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-8-17-kix": {
+	id: "2023-8-17-kix";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-9-22-cub-camp": {
+	id: "2023-9-22-cub-camp";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-9-29-scout-camp": {
+	id: "2023-9-29-scout-camp";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-9-5-cub-leader-meeting": {
+	id: "2023-9-5-cub-leader-meeting";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-9-6-scout-leader-meeting": {
+	id: "2023-9-6-scout-leader-meeting";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2023-9-8-beaver-camp": {
+	id: "2023-9-8-beaver-camp";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-1-24-cub-leader-meeting": {
+	id: "2024-1-24-cub-leader-meeting";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-10-12-beavers-archery": {
+	id: "2024-10-12-beavers-archery";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-11-22-cub-night-hike": {
+	id: "2024-11-22-cub-night-hike";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-11-5-cub-leaders-meeting-skittles-night": {
+	id: "2024-11-5-cub-leaders-meeting-skittles-night";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-12-10-cub-christingle": {
+	id: "2024-12-10-cub-christingle";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-12-7-cub-big-day-out": {
+	id: "2024-12-7-cub-big-day-out";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-2-25-county-cub-quiz": {
+	id: "2024-2-25-county-cub-quiz";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-2-3-beaver-movie-night": {
+	id: "2024-2-3-beaver-movie-night";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-2-4-cub-quiz": {
+	id: "2024-2-4-cub-quiz";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-3-2-cub-big-splash": {
+	id: "2024-3-2-cub-big-splash";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-4-13-kinder-scout-walk-weekend": {
+	id: "2024-4-13-kinder-scout-walk-weekend";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-4-21-st-georges-day-parade-tbc": {
+	id: "2024-4-21-st-georges-day-parade-tbc";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-4-23-st-georges-day": {
+	id: "2024-4-23-st-georges-day";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-4-27-county-cub-leaders-camp": {
+	id: "2024-4-27-county-cub-leaders-camp";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-4-28-county-cub-cooking-comp": {
+	id: "2024-4-28-county-cub-cooking-comp";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-4-28-ramble": {
+	id: "2024-4-28-ramble";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-5-11-celebration-event": {
+	id: "2024-5-11-celebration-event";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-5-7-cub-leader-meeting": {
+	id: "2024-5-7-cub-leader-meeting";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-6-21-cub-football-comp": {
+	id: "2024-6-21-cub-football-comp";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-6-23-beaver-paddle-day": {
+	id: "2024-6-23-beaver-paddle-day";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-6-28-scoutabout": {
+	id: "2024-6-28-scoutabout";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-7-14-beaver-paddle-day": {
+	id: "2024-7-14-beaver-paddle-day";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-7-16-cub-leaders-social-pelican-pub": {
+	id: "2024-7-16-cub-leaders-social-pelican-pub";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-9-20-cub-camp": {
+	id: "2024-9-20-cub-camp";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+"2024-9-4-cub-leader-meeting": {
+	id: "2024-9-4-cub-leader-meeting";
+  collection: "events";
+  data: InferEntrySchema<"events">
+};
+};
+"groups": {
+"addlestone-1st-4th/index": {
+	id: "addlestone-1st-4th/index";
   collection: "groups";
   data: InferEntrySchema<"groups">
+};
+"addlestone-5th/index": {
+	id: "addlestone-5th/index";
+  collection: "groups";
+  data: InferEntrySchema<"groups">
+};
+"chertsey-1st/index": {
+	id: "chertsey-1st/index";
+  collection: "groups";
+  data: InferEntrySchema<"groups">
+};
+"egham-1st/index": {
+	id: "egham-1st/index";
+  collection: "groups";
+  data: InferEntrySchema<"groups">
+};
+"egham-hythe-1st/index": {
+	id: "egham-hythe-1st/index";
+  collection: "groups";
+  data: InferEntrySchema<"groups">
+};
+"englefield-green-1st/index": {
+	id: "englefield-green-1st/index";
+  collection: "groups";
+  data: InferEntrySchema<"groups">
+};
+"new-haw-1st/index": {
+	id: "new-haw-1st/index";
+  collection: "groups";
+  data: InferEntrySchema<"groups">
+};
+"new-haw-2nd/index": {
+	id: "new-haw-2nd/index";
+  collection: "groups";
+  data: InferEntrySchema<"groups">
+};
+"ottershaw-1st/index": {
+	id: "ottershaw-1st/index";
+  collection: "groups";
+  data: InferEntrySchema<"groups">
+};
+"thorpe-2nd/index": {
+	id: "thorpe-2nd/index";
+  collection: "groups";
+  data: InferEntrySchema<"groups">
+};
+"virginia-water-1st/index": {
+	id: "virginia-water-1st/index";
+  collection: "groups";
+  data: InferEntrySchema<"groups">
+};
+};
+"units": {
+"endeavour-esu/index": {
+	id: "endeavour-esu/index";
+  collection: "units";
+  data: InferEntrySchema<"units">
+};
+"intrepid-esu/index": {
+	id: "intrepid-esu/index";
+  collection: "units";
+  data: InferEntrySchema<"units">
+};
+"phoenix-esu/index": {
+	id: "phoenix-esu/index";
+  collection: "units";
+  data: InferEntrySchema<"units">
 };
 };
 

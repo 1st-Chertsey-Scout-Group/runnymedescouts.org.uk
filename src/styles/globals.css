@@ -7,10 +7,38 @@
         --transparent: transparent;
         --white: #ffffff;
 
-        --background: 0 0% 100%;
-        --foreground: 20 14.3% 4.1%;
+        --background: #ffffff;
+        --foreground: #000000;
 
-        --primary: 24 9.8% 10%;
-        --primary-foreground: 60 9.1% 97.8%;
+        --primary: #7413dc;
+        --primary-foreground: #ffffff;
+
+        --alternative: #f9fafb;
+        --alternative-foreground: #111827;
+
+        --alternative-dark: #d1d5db;
+        --alternative-dark-foreground: #111827;
+
+        --icon-facebook: #39569c;
+        --icon-email: #ea4c89;
+        --icon-website: #28b661;
+        --icon-hover: #111827;
+
+
+        --input: #f9fafb;
+        --input-border: #d1d5db;
+        --input-foreground: #111827;
+    }
+
+
+    main a {
+        @apply underline underline-offset-2 text-primary
+    }
+
+    html{
+        @apply bg-alternative
+    }
+    body{
+        @apply bg-background 
     }
 }

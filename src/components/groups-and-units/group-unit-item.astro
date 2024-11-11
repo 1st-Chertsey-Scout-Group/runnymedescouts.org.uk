@@ -1,0 +1,111 @@
+---
+import { Image } from "astro:assets";
+import { Globe, Facebook, Mail } from "lucide-react";
+import { slugify } from "@/lib/utils";
+
+interface Props {
+    name: string;
+    image: {
+        src: string;
+        width: number;
+        height: number;
+        format:
+            | "png"
+            | "jpg"
+            | "jpeg"
+            | "tiff"
+            | "webp"
+            | "gif"
+            | "svg"
+            | "avif";
+    };
+    location: string;
+    mapLink: string;
+    facebook?: string | undefined;
+    website?: string | undefined;
+    email?: string | undefined;
+}
+
+const { image, name, location, email, facebook, website, mapLink } =
+    Astro.props;
+
+const id = slugify(name);
+---
+
+<div class="text-center">
+    <Image
+        loading={"lazy"}
+        src={image}
+        alt={name}
+        width={256}
+        height={256}
+        quality={100}
+        class="mx-auto mb-4 w-64 h-64 sm:h-auto sm:w-auto rounded-2xl"
+    />
+
+    <h3 class="mb-1 text-2xl font-bold tracking-tight">
+        {name}
+    </h3>
+    <p><a target="_blank" href={mapLink}>{location}</a></p>
+
+    <ul class="flex justify-center mt-4 space-x-4">
+        {
+            website && (
+                <li>
+                    <a
+                        target="_blank"
+                        href={website}
+                        class="text-icon-website hover:text-icon-hover"
+                    >
+                        <Globe
+                            className="w-6 h-6"
+                            aria-labelledby={id + "website"}
+                        />
+                        <span id={id + "website"} class="sr-only">
+                            {name} website
+                        </span>
+                    </a>
+                </li>
+            )
+        }
+
+        {
+            facebook && (
+                <li>
+                    <a
+                        target="_blank"
+                        href={facebook}
+                        class="text-icon-facebook hover:text-icon-hover"
+                    >
+                        <Facebook
+                            className="w-6 h-6"
+                            aria-labelledby={id + "facebook"}
+                        />
+                        <span id={id + "facebook"} class="sr-only">
+                            {name}'s facebook page
+                        </span>
+                    </a>
+                </li>
+            )
+        }
+
+        {
+            email && (
+                <li>
+                    <a
+                        href={"mailto:" + email}
+                        class="text-icon-email hover:text-icon-hover"
+                    >
+                        <Mail
+                            className="w-6 h-6"
+                            aria-labelledby={id + "email"}
+                        />
+                        <span id={id + "email"} class="sr-only">
+                            {name}'s email address
+                        </span>
+                    </a>
+                </li>
+            )
+        }
+    </ul>
+</div>
