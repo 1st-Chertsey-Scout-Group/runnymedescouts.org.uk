@@ -1,5 +1,4 @@
 import type { NavigationLink } from "@/models/navigation-link";
-import { SITE_URL } from "./consts";
 
 export const HEADER_LINKS: NavigationLink[] = [
     {
