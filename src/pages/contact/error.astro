@@ -1,0 +1,23 @@
+---
+import Button from "@/components/ui/button.astro";
+import PageLayout from "@/layouts/page.layout.astro";
+import { ArrowLeft } from "lucide-react";
+---
+
+<PageLayout
+    title="Something went wrong | Runnymede District Scouts"
+    description="Form submit error"
+    heading="Something went wrong"
+    subHeading="We were unable to recieve your message! Try again, if the problem persists try again later."
+>
+    <div class="max-w-screen-sm mx-auto">
+        <a href="/">
+            <Button
+                Icon={ArrowLeft}
+                type="button"
+                text="Back to homepage"
+                iconClassName="order-first"
+            />
+        </a>
+    </div>
+</PageLayout>

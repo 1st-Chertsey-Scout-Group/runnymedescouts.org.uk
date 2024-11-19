@@ -1,0 +1,23 @@
+---
+import Button from "@/components/ui/button.astro";
+import PageLayout from "@/layouts/page.layout.astro";
+import { ArrowLeft } from "lucide-react";
+---
+
+<PageLayout
+    title="We have your message | Runnymede District Scouts"
+    description="Form submit success"
+    heading="We have your message"
+    subHeading="Thank you for reaching out, we will get back to you as soon as possible"
+>
+    <div class="max-w-screen-sm mx-auto">
+        <a href="/">
+            <Button
+                Icon={ArrowLeft}
+                type="button"
+                text="Back to homepage"
+                iconClassName="order-first"
+            />
+        </a>
+    </div>
+</PageLayout>
