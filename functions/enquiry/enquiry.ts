@@ -129,7 +129,7 @@ function errorResponse(domain: string) {
   return {
     statusCode: 302,
     headers: {
-      location: `${domain}/error`,
+      location: `${domain}/contact/error`,
     },
   };
 }
@@ -138,7 +138,7 @@ function successResponse(domain: string) {
   return {
     statusCode: 302,
     headers: {
-      location: `${domain}/success`,
+      location: `${domain}/contact/success`,
     },
   };
 }
