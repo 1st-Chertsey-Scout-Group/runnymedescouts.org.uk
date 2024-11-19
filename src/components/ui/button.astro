@@ -1,0 +1,27 @@
+---
+import { cn } from "@/lib/utils";
+
+interface Props {
+  Icon: React.ElementType;
+  type: "submit" | "reset" | "button";
+  text: string;
+
+  iconClassName?: string;
+  textClassName?: string;
+}
+
+const { Icon, type, text, iconClassName, textClassName }: Props = Astro.props;
+---
+
+<button
+  type={type}
+  class="flex gap-4 items-center border justify-center py-3 px-5 font-medium text-center text-white rounded-lg bg-primary w-full focus:ring-4 focus:outline-none focus:ring-primary hover:border-primary hover:bg-white hover:text-primary"
+>
+  <span class={textClassName}>
+    {text}
+  </span>
+
+  <Icon
+    className={cn("w-5 h-5 transition-transform duration-100", iconClassName)}
+  />
+</button>

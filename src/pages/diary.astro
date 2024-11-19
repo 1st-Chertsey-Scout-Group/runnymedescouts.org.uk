@@ -18,28 +18,12 @@ const events = (await getCollection("events"))
 <PageLayout
 	title="Event Diary | Upcoming Activities in Runnymede"
 	description="Stay updated with upcoming events and activities in Runnymede by exploring our comprehensive diary. Find details on camps, meetings, workshops, and other exciting scouting events happening near you."
+	heading="District Diary"
+	subHeading="Find out whats happening in Runnymede"
 >
-	<section class="antialiased">
-		<div
-			class="lg:px-6 lg:py-16 max-w-screen-md mx-auto px-4 py-8 text-center"
-		>
-			<div class="max-w-3xl mx-auto text-center">
-				<h2 class="mb-4 text-4xl tracking-tight font-extrabold">
-					District Diary
-				</h2>
-				<p class="font-light sm:text-xl">
-					Find out whats happening in Runnymede
-				</p>
-			</div>
-
-			<div class="flow-root max-w-3xl mx-auto mt-8 sm:mt-12 lg:mt-16">
-				<div class="-my-4 divide-y divide-alternative-dark">
-					{
-						events &&
-							events.map((event) => <DiaryItem event={event} />)
-					}
-				</div>
-			</div>
+	<div class="flow-root max-w-screen-sm mx-auto mt-8 sm:mt-12 lg:mt-16">
+		<div class="-my-4 divide-y divide-alternative-dark">
+			{events && events.map((event) => <DiaryItem event={event} />)}
 		</div>
-	</section>
+	</div>
 </PageLayout>
