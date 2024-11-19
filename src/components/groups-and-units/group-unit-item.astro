@@ -23,10 +23,10 @@ interface Props {
     mapLink: string;
     facebook?: string | undefined;
     website?: string | undefined;
-    email?: string | undefined;
+    contact?: string | undefined;
 }
 
-const { image, name, location, email, facebook, website, mapLink } =
+const { image, name, location, contact, facebook, website, mapLink } =
     Astro.props;
 
 const id = slugify(name);
@@ -90,18 +90,18 @@ const id = slugify(name);
         }
 
         {
-            email && (
+            contact && (
                 <li>
                     <a
-                        href={"mailto:" + email}
-                        class="text-icon-email hover:text-icon-hover"
+                        href={ contact}
+                        class="text-icon-contact hover:text-icon-hover"
                     >
                         <Mail
                             className="w-6 h-6"
-                            aria-labelledby={id + "email"}
+                            aria-labelledby={id + "contact"}
                         />
-                        <span id={id + "email"} class="sr-only">
-                            {name}'s email address
+                        <span id={id + "contact"} class="sr-only">
+                            {name}'s contact form
                         </span>
                     </a>
                 </li>

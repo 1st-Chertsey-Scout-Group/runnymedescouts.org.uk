@@ -1,5 +1,5 @@
 ---
-import PageLayout from "@/layouts/page.layout.astro";
+import HomeLayout from "@/layouts/home.layout.astro";
 
 import { Image } from "astro:assets";
 
@@ -22,7 +22,7 @@ const stats: { label: string; value: string }[] = [
 ];
 ---
 
-<PageLayout
+<HomeLayout
 	title="Welcome to Runnymede | Explore Scouting Opportunities"
 	description="Welcome to Runnymede! Join us in empowering young people through fun, adventure, and community service. Discover scouting opportunities, learn about upcoming events, and explore how to get involved."
 >
@@ -110,4 +110,4 @@ const stats: { label: string; value: string }[] = [
 			</dl>
 		</div>
 	</section>
-</PageLayout>
+</HomeLayout>

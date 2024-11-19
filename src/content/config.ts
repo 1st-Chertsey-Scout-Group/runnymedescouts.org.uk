@@ -13,7 +13,7 @@ const groupsCollection = defineCollection({
 
             facebook: z.string().optional(),
             website: z.string().optional(),
-            email: z.string().optional()
+            contact: z.string().optional()
         }),
 });
 
@@ -30,7 +30,7 @@ const unitsCollection = defineCollection({
 
             facebook: z.string().optional(),
             website: z.string().optional(),
-            email: z.string().optional()
+            contact: z.string().optional()
         }),
 });
 

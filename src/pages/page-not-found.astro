@@ -1,0 +1,23 @@
+---
+import Button from "@/components/ui/button.astro";
+import PageLayout from "@/layouts/page.layout.astro";
+import { ArrowLeft } from "lucide-react";
+---
+
+<PageLayout
+    title="Page not found | Runnymede District Scouts"
+    description="Page not found"
+    heading="404"
+    subHeading="Sorry, we can't find that page. You'll find lots to explore on the home page."
+>
+    <div class="max-w-screen-sm mx-auto">
+        <a href="/">
+            <Button
+                Icon={ArrowLeft}
+                type="button"
+                text="Back to homepage"
+                iconClassName="order-first"
+            />
+        </a>
+    </div>
+</PageLayout>

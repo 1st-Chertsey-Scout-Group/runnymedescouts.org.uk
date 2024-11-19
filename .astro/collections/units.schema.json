@@ -22,7 +22,7 @@
         "website": {
           "type": "string"
         },
-        "email": {
+        "contact": {
           "type": "string"
         },
         "$schema": {

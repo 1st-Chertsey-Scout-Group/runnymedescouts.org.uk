@@ -1,0 +1,28 @@
+---
+import FooterNavigation from "@/components/footer-navigation.astro";
+import HeaderNavigation from "@/components/header-navigation.astro";
+import JoinUsCTA from "@/components/join-us-cta.astro";
+import BaseLayout from "@/layouts/base.layout.astro";
+
+interface PageProps {
+    title: string;
+    description: string;
+}
+
+const { title, description }: PageProps =
+    Astro.props.frontmatter || Astro.props;
+
+const currentPath = Astro.url.pathname;
+---
+
+<BaseLayout title={title} description={description}>
+    <div class="container mx-auto">
+        <HeaderNavigation currentPath={currentPath} />
+
+        <main>
+            <slot />
+        </main>
+    </div>
+    <JoinUsCTA />
+    <FooterNavigation currentPath={currentPath} />
+</BaseLayout>

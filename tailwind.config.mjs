@@ -32,7 +32,7 @@ export default {
 
 			icon: {
 				facebook: "var(--icon-facebook)",
-				email: "var(--icon-email)",
+				contact: "var(--icon-contact)",
 				website: "var(--icon-website)",
 				hover: "var(--icon-hover)"
 			}
