@@ -3,15 +3,15 @@ import PageLayout from "@/layouts/page.layout.astro";
 import { getCollection } from "astro:content";
 import GroupUnitItem from "@/components/groups-and-units/group-unit-item.astro";
 
-const groups = await getCollection("groups");
-const units = await getCollection("units");
+const groups = (await getCollection("groups")).filter((group) => group.data.enabled);
+const units = (await getCollection("units")).filter((group) => group.data.enabled);
 ---
 
 <PageLayout
 	title="Local Scout Groups & Units | Join Scouting in Runnymede"
 	description="Discover local scout groups and units within Runnymede. Learn about each group's activities, find meeting times, and connect with leaders to join the scouting adventure in your community."
 	heading="Our groups and units"
-	subHeading="We have 11 groups and 3 explorer units dotted around runnymede. Find out more information on each group by visiting their socials!"
+	subHeading=`We have ${groups.length} groups and ${units.length} explorer units dotted around runnymede. Find out more information on each group by visiting their socials!`
 >
 	<div class="max-w-screen-xl mx-auto">
 		<div

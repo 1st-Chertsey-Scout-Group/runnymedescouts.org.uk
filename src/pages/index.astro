@@ -5,19 +5,23 @@ import { Image } from "astro:assets";
 
 import homeLeft from "@/images/home-left.jpg";
 import homeRight from "@/images/home-right.jpg";
+import { getCollection } from "astro:content";
+
+const groups = (await getCollection("groups")).filter((group) => group.data.enabled);
+const units = (await getCollection("units")).filter((unit) => unit.data.enabled);
 
 const stats: { label: string; value: string }[] = [
 	{
 		label: "young people",
-		value: "5,000+",
+		value: "850+",
 	},
 	{
 		label: "volunteers",
-		value: "100+",
+		value: "200+",
 	},
 	{
-		label: "groups",
-		value: "11",
+		label: "groups & units",
+		value: groups.length + units.length + "",
 	},
 ];
 ---
@@ -35,7 +39,7 @@ const stats: { label: string; value: string }[] = [
 					We are a Scout District operating in the County of Surrey.
 				</h2>
 				<p class="mb-4">
-					We change lives by offering 6- to 25-year-olds fun and
+					We change lives by offering 4 to 25 year-olds fun and
 					challenging activities, unique experiences, everyday
 					adventure and the chance to help others so that we make a
 					positive impact in communities.
@@ -87,9 +91,7 @@ const stats: { label: string; value: string }[] = [
 				Home to scouting in Runnymede
 			</h2>
 			<p class="font-light sm:text-lg sm:px-4 lg:px-32 xl:px-64">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-				Maecenas vulputate, purus vel posuere accumsan, eros dolor porta
-				tellus, sit amet ullamcorper magna risus at tellus.
+				We bring together young people and dedicated volunteers across all of our groups, creating a vibrant and supportive community. We've inspired generations to grow, lead, and make a difference in their communities.
 			</p>
 			<dl
 				class="grid grid-cols-1 gap-4 mx-auto mt-8 max-w-screen-md lg:mt-14 sm:grid-cols-3"
