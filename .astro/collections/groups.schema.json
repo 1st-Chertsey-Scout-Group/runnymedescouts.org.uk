@@ -25,6 +25,10 @@
         "contact": {
           "type": "string"
         },
+        "enabled": {
+          "type": "boolean",
+          "default": true
+        },
         "$schema": {
           "type": "string"
         }

@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import { Globe, Facebook, Mail } from "lucide-react";
+import { Globe, Facebook, Mail, MapPinned } from "lucide-react";
 import { slugify } from "@/lib/utils";
 
 interface Props {
@@ -46,7 +46,7 @@ const id = slugify(name);
     <h3 class="mb-1 text-2xl font-bold tracking-tight">
         {name}
     </h3>
-    <p><a target="_blank" href={mapLink}>{location}</a></p>
+    <p>{location}</p>
 
     <ul class="flex justify-center mt-4 space-x-4">
         {
@@ -56,13 +56,14 @@ const id = slugify(name);
                         target="_blank"
                         href={website}
                         class="text-icon-website hover:text-icon-hover"
+                        title={`${name}'s website`}
                     >
                         <Globe
                             className="w-6 h-6"
                             aria-labelledby={id + "website"}
                         />
                         <span id={id + "website"} class="sr-only">
-                            {name} website
+                            {name}'s website
                         </span>
                     </a>
                 </li>
@@ -76,6 +77,7 @@ const id = slugify(name);
                         target="_blank"
                         href={facebook}
                         class="text-icon-facebook hover:text-icon-hover"
+                        title={`${name}'s facebook page`}
                     >
                         <Facebook
                             className="w-6 h-6"
@@ -93,8 +95,10 @@ const id = slugify(name);
             contact && (
                 <li>
                     <a
-                        href={ contact}
+                        target="_blank"
+                        href={contact}
                         class="text-icon-contact hover:text-icon-hover"
+                        title={`${name}'s contact form`}
                     >
                         <Mail
                             className="w-6 h-6"
@@ -102,6 +106,26 @@ const id = slugify(name);
                         />
                         <span id={id + "contact"} class="sr-only">
                             {name}'s contact form
+                        </span>
+                    </a>
+                </li>
+            )
+        }
+        {
+            mapLink && (
+                <li>
+                    <a
+                        target="_blank"
+                        href={mapLink}
+                        class="text-icon-map hover:text-icon-hover"
+                        title={`Find ${name} on a map`}
+                    >
+                        <MapPinned
+                            className="w-6 h-6"
+                            aria-labelledby={id + "mapLink"}
+                        />
+                        <span id={id + "mapLink"} class="sr-only">
+                            Find {name} on a map
                         </span>
                     </a>
                 </li>

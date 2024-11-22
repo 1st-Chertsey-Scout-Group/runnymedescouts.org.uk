@@ -34,6 +34,7 @@ export default {
 				facebook: "var(--icon-facebook)",
 				contact: "var(--icon-contact)",
 				website: "var(--icon-website)",
+				map: "var(--icon-map)",
 				hover: "var(--icon-hover)"
 			}
 
