@@ -1,9 +1,11 @@
 ---
 import { Image } from "astro:assets";
-import { Globe, Facebook, Mail, MapPinned } from "lucide-react";
-import { slugify } from "@/lib/utils";
+import { Globe, Facebook, Mail, MapPinned, ArrowRight } from "lucide-react";
+import Button from "../ui/button.astro";
 
 interface Props {
+    type: "group" | "unit";
+    slug: string;
     name: string;
     image: {
         src: string;
@@ -19,17 +21,24 @@ interface Props {
             | "svg"
             | "avif";
     };
-    location: string;
+    address: string;
     mapLink: string;
     facebook?: string | undefined;
     website?: string | undefined;
     contact?: string | undefined;
 }
 
-const { image, name, location, contact, facebook, website, mapLink } =
-    Astro.props;
-
-const id = slugify(name);
+const {
+    type,
+    slug,
+    image,
+    name,
+    address,
+    contact,
+    facebook,
+    website,
+    mapLink,
+} = Astro.props;
 ---
 
 <div class="text-center">
@@ -46,7 +55,7 @@ const id = slugify(name);
     <h3 class="mb-1 text-2xl font-bold tracking-tight">
         {name}
     </h3>
-    <p>{location}</p>
+    <p>{address}</p>
 
     <ul class="flex justify-center mt-4 space-x-4">
         {
@@ -60,9 +69,9 @@ const id = slugify(name);
                     >
                         <Globe
                             className="w-6 h-6"
-                            aria-labelledby={id + "website"}
+                            aria-labelledby={slug + "-website"}
                         />
-                        <span id={id + "website"} class="sr-only">
+                        <span id={slug + "-website"} class="sr-only">
                             {name}'s website
                         </span>
                     </a>
@@ -81,9 +90,9 @@ const id = slugify(name);
                     >
                         <Facebook
                             className="w-6 h-6"
-                            aria-labelledby={id + "facebook"}
+                            aria-labelledby={slug + "-facebook"}
                         />
-                        <span id={id + "facebook"} class="sr-only">
+                        <span id={slug + "-facebook"} class="sr-only">
                             {name}'s facebook page
                         </span>
                     </a>
@@ -102,9 +111,9 @@ const id = slugify(name);
                     >
                         <Mail
                             className="w-6 h-6"
-                            aria-labelledby={id + "contact"}
+                            aria-labelledby={slug + "-contact"}
                         />
-                        <span id={id + "contact"} class="sr-only">
+                        <span id={slug + "-contact"} class="sr-only">
                             {name}'s contact form
                         </span>
                     </a>
@@ -122,9 +131,9 @@ const id = slugify(name);
                     >
                         <MapPinned
                             className="w-6 h-6"
-                            aria-labelledby={id + "mapLink"}
+                            aria-labelledby={slug + "-mapLink"}
                         />
-                        <span id={id + "mapLink"} class="sr-only">
+                        <span id={slug + "-mapLink"} class="sr-only">
                             Find {name} on a map
                         </span>
                     </a>
@@ -132,4 +141,20 @@ const id = slugify(name);
             )
         }
     </ul>
+
+    {
+        type == "group" && (
+            <div class="mt-4">
+                <a href={"/groups-and-units/" + slug}>
+                    <Button
+                        type="button"
+                        Icon={ArrowRight}
+                        text="More Information"
+                        variant="link"
+                        size="small"
+                    />
+                </a>
+            </div>
+        )
+    }
 </div>

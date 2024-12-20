@@ -1,0 +1,6 @@
+{
+    "name": "Scouts",
+    "minAge": 10.5,
+    "maxAge": 14,
+    "order": 4
+}

@@ -1,0 +1,6 @@
+{
+    "name": "Cubs",
+    "minAge": 8,
+    "maxAge": 10.5,
+    "order": 3
+}

@@ -1,14 +1,24 @@
 ---
-import HomeLayout from "@/layouts/home.layout.astro";
+import PageLayout from "@/layouts/page.layout.astro";
 
 import { Image } from "astro:assets";
 
 import homeLeft from "@/images/home-left.jpg";
 import homeRight from "@/images/home-right.jpg";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
+import BlockWrapper from "@/components/block/block-wrapper.astro";
+import BlockBody from "@/components/block/block-body.astro";
+import BlockHeader from "@/components/block/block-header.astro";
+import BlockSeperator from "@/components/block/block-seperator.astro";
+import BlockSubHeader from "@/components/block/block-sub-header.astro";
+import Seperator from "@/components/seperator.astro";
 
-const groups = (await getCollection("groups")).filter((group) => group.data.enabled);
-const units = (await getCollection("units")).filter((unit) => unit.data.enabled);
+const groups = (await getCollection("groups")).filter(
+	(group: CollectionEntry<"groups">) => group.data.enabled,
+);
+const units = (await getCollection("units")).filter(
+	(group: CollectionEntry<"units">) => group.data.enabled,
+);
 
 const stats: { label: string; value: string }[] = [
 	{
@@ -26,73 +36,84 @@ const stats: { label: string; value: string }[] = [
 ];
 ---
 
-<HomeLayout
+<PageLayout
 	title="Welcome to Runnymede | Explore Scouting Opportunities"
 	description="Welcome to Runnymede! Join us in empowering young people through fun, adventure, and community service. Discover scouting opportunities, learn about upcoming events, and explore how to get involved."
 >
-	<section>
-		<div
-			class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6"
-		>
-			<div class="font-light sm:text-lg">
-				<h2 class="mb-4 text-4xl tracking-tight font-extrabold">
-					We are a Scout District operating in the County of Surrey.
-				</h2>
-				<p class="mb-4">
-					We change lives by offering 4 to 25 year-olds fun and
-					challenging activities, unique experiences, everyday
-					adventure and the chance to help others so that we make a
-					positive impact in communities.
-				</p>
-				<p class="mb-4">
-					Scouts helps children and young adults reach their full
-					potential. Our Scouts develop skills including teamwork,
-					time management, leadership, initiative, planning,
-					communication, self-motivation, cultural awareness and
-					commitment. We help young people to get jobs, save lives and
-					even change the world.
-				</p>
-				<p class="mb-4">
-					There are over 500,000 Scouts in the UK alone!
-				</p>
-				<p class="mb-4">
-					We provide a full active programme of activities, find out
-					more by viewing our <a href="/diary">District Diary</a>.
-				</p>
+	<BlockWrapper id="hero">
+		<BlockSeperator slot="seperator">
+			<Seperator loading="eager" />
+		</BlockSeperator>
+		<BlockBody slot="body" size="xl">
+			<div
+				class="gap-16 items-center py-8 px-4 lg:grid lg:grid-cols-2 lg:py-16 lg:px-6"
+			>
+				<div class="font-light sm:text-lg">
+					<h2
+						class="mb-4 text-4xl tracking-tight font-extrabold text-primary"
+					>
+						We are a Scout District operating in the County of
+						Surrey.
+					</h2>
+					<p class="mb-4">
+						We change lives by offering 4 to 25 year-olds fun and
+						challenging activities, unique experiences, everyday
+						adventure and the chance to help others so that we make
+						a positive impact in communities.
+					</p>
+					<p class="mb-4">
+						Scouts helps children and young adults reach their full
+						potential. Our Scouts develop skills including teamwork,
+						time management, leadership, initiative, planning,
+						communication, self-motivation, cultural awareness and
+						commitment. We help young people to get jobs, save lives
+						and even change the world.
+					</p>
+					<p class="mb-4">
+						There are over 500,000 Scouts in the UK alone!
+					</p>
+					<p class="mb-4">
+						We provide a full active programme of activities, find
+						out more by viewing our <a href="/diary"
+							>District Diary</a
+						>.
+					</p>
+				</div>
+				<div class="grid grid-cols-2 gap-4 mt-8">
+					<Image
+						loading={"eager"}
+						src={homeLeft}
+						alt={"Runnymede scouts"}
+						width={284}
+						height={458}
+						quality={100}
+						class="w-full rounded-lg"
+					/>
+					<Image
+						loading={"eager"}
+						src={homeRight}
+						alt={"Runnymede scouts"}
+						width={284}
+						height={458}
+						quality={100}
+						class="mt-4 w-full lg:mt-10 rounded-lg"
+					/>
+				</div>
 			</div>
-			<div class="grid grid-cols-2 gap-4 mt-8">
-				<Image
-					loading={"eager"}
-					src={homeLeft}
-					alt={"Runnymede scouts"}
-					width={284}
-					height={458}
-					quality={100}
-					class="w-full rounded-lg"
-				/>
-				<Image
-					loading={"eager"}
-					src={homeRight}
-					alt={"Runnymede scouts"}
-					width={284}
-					height={458}
-					quality={100}
-					class="mt-4 w-full lg:mt-10 rounded-lg"
-				/>
-			</div>
-		</div>
-	</section>
+		</BlockBody>
+	</BlockWrapper>
 
-	<section class="">
-		<div
-			class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6"
-		>
-			<h2 class="mb-4 text-3xl tracking-tight font-extrabold lg:text-4xl">
-				Home to scouting in Runnymede
-			</h2>
-			<p class="font-light sm:text-lg sm:px-4 lg:px-32 xl:px-64">
-				We bring together young people and dedicated volunteers across all of our groups, creating a vibrant and supportive community. We've inspired generations to grow, lead, and make a difference in their communities.
-			</p>
+	<BlockWrapper id="stats">
+		<BlockHeader slot="header" className="text-primary">
+			Home to scouting in Runnymede
+		</BlockHeader>
+		<BlockSubHeader slot="subHeader">
+			We bring together young people and dedicated volunteers across all
+			of our groups, creating a vibrant and supportive community. We've
+			inspired generations to grow, lead, and make a difference in their
+			communities.
+		</BlockSubHeader>
+		<BlockBody size="xl" slot="body">
 			<dl
 				class="grid grid-cols-1 gap-4 mx-auto mt-8 max-w-screen-md lg:mt-14 sm:grid-cols-3"
 			>
@@ -110,6 +131,6 @@ const stats: { label: string; value: string }[] = [
 						))
 				}
 			</dl>
-		</div>
-	</section>
-</HomeLayout>
+		</BlockBody>
+	</BlockWrapper>
+</PageLayout>

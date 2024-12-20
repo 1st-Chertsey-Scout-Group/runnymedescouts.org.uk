@@ -1,0 +1,37 @@
+---
+import type { GroupSection } from "@/content/config";
+import SectionItem from "./section-item.astro";
+
+interface Props {
+  sections: GroupSection[];
+}
+
+const { sections }: Props = Astro.props;
+---
+
+<div
+  class="mt-8 lg:mt-16 flex flex-wrap gap-8 justify-center"
+>
+  {
+    sections &&
+      sections.map(
+        ({
+          section,
+          image,
+          meetingDay,
+          meetingEndTime,
+          meetingStartTime,
+          name,
+        }) => (
+          <SectionItem
+            sectionId={section.id}
+            image={image}
+            name={name}
+            meetingDay={meetingDay}
+            meetingEndTime={meetingEndTime}
+            meetingStartTime={meetingStartTime}
+          />
+        ),
+      )
+  }
+</div>

@@ -1,0 +1,150 @@
+---
+import BlockBody from "@/components/block/block-body.astro";
+import BlockHeader from "@/components/block/block-header.astro";
+import BlockSeperator from "@/components/block/block-seperator.astro";
+import BlockSubHeader from "@/components/block/block-sub-header.astro";
+import BlockWrapper from "@/components/block/block-wrapper.astro";
+import GoogleMap from "@/components/google-map.astro";
+import SectionsList from "@/components/sections/sections-list.astro";
+import Seperator from "@/components/seperator.astro";
+import PageLayout from "@/layouts/page.layout.astro";
+import { cn } from "@/lib/utils";
+import { getCollection, type CollectionEntry } from "astro:content";
+import { Facebook, Globe, Mail } from "lucide-react";
+
+export async function getStaticPaths() {
+    const groupsCollection: CollectionEntry<"groups">[] =
+        await getCollection("groups");
+    return groupsCollection.map((item) => ({
+        params: { slug: item.slug },
+        props: item,
+    }));
+}
+type Props = CollectionEntry<"groups">;
+
+const group = Astro.props;
+
+const slug = group.slug;
+const {
+    website,
+    contact,
+    facebook,
+    name,
+    longAddress,
+    address: { mapUrl },
+    sections,
+    charityNumber,
+} = group.data;
+---
+
+<PageLayout
+    title={name + " | Local Scout Groups & Units | Join Scouting in Runnymede"}
+    description="Discover local scout groups and units within Runnymede. Learn about each group's activities, find meeting times, and connect with leaders to join the scouting adventure in your community."
+>
+    <BlockWrapper id="success">
+        <BlockSeperator slot="seperator">
+            <Seperator loading="eager" />
+        </BlockSeperator>
+        <BlockHeader slot="header" className="text-primary">
+            {name} Scout Group
+        </BlockHeader>
+        <BlockSubHeader slot="subHeader">
+            {longAddress}
+        </BlockSubHeader>
+        <BlockBody slot="body" size="md" className="mb-0 lg:mb-0">
+            <GoogleMap mapUrl={mapUrl} mapTitle={"Google Maps for " + name} loading="eager" />
+        </BlockBody>
+    </BlockWrapper>
+    
+    <BlockWrapper id="socials">
+        <BlockBody slot="body" size="sm" className="mb-0 lg:mb-0">
+            <ul class="flex justify-center space-x-4">
+                {
+                    website && (
+                        <li>
+                            <a
+                                target="_blank"
+                                href={website}
+                                class="text-icon-website hover:text-icon-hover"
+                                title={`${name}'s website`}
+                            >
+                                <Globe
+                                    className="w-6 h-6"
+                                    aria-labelledby={slug + "-website"}
+                                />
+                                <span id={slug + "-website"} class="sr-only">
+                                    {name}'s website
+                                </span>
+                            </a>
+                        </li>
+                    )
+                }
+
+                {
+                    facebook && (
+                        <li>
+                            <a
+                                target="_blank"
+                                href={facebook}
+                                class="text-icon-facebook hover:text-icon-hover"
+                                title={`${name}'s facebook page`}
+                            >
+                                <Facebook
+                                    className="w-6 h-6"
+                                    aria-labelledby={slug + "-facebook"}
+                                />
+                                <span id={slug + "-facebook"} class="sr-only">
+                                    {name}'s facebook page
+                                </span>
+                            </a>
+                        </li>
+                    )
+                }
+
+                {
+                    contact && (
+                        <li>
+                            <a
+                                target="_blank"
+                                href={contact}
+                                class="text-icon-contact hover:text-icon-hover"
+                                title={`${name}'s contact form`}
+                            >
+                                <Mail
+                                    className="w-6 h-6"
+                                    aria-labelledby={slug + "-contact"}
+                                />
+                                <span id={slug + "-contact"} class="sr-only">
+                                    {name}'s contact form
+                                </span>
+                            </a>
+                        </li>
+                    )
+                }
+            </ul>
+            <div
+                class={cn("flex justify-center font-sm", {
+                    "mt-4": !!website || !!facebook || !!contact,
+                })}
+            >
+                Charity Number:&nbsp;<a class="hover:underline underline-offset-2 text-primary"
+                    href={"https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/" +
+                        charityNumber +
+                        "/charity-overview"}>{charityNumber}</a
+                >
+            </div>
+        </BlockBody>
+    </BlockWrapper>
+
+    <BlockWrapper id="sections" variant="alternative">
+        <BlockSeperator slot="seperator">
+            <Seperator loading="eager" />
+        </BlockSeperator>
+        <BlockHeader slot="header" className="text-primary">
+            Sections
+        </BlockHeader>
+        <BlockBody slot="body" size="lg">
+            <SectionsList sections={sections} /></BlockBody
+        >
+    </BlockWrapper>
+</PageLayout>

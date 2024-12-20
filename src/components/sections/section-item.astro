@@ -1,0 +1,43 @@
+---
+import Image from "astro/components/Image.astro";
+import { getEntry } from "astro:content";
+
+interface Props {
+  image: ImageMetadata;
+  name: string;
+  meetingDay: string;
+  meetingStartTime: string;
+  meetingEndTime: string;
+  sectionId: string;
+}
+
+const {
+  image,
+  name,
+  meetingDay,
+  meetingEndTime,
+  meetingStartTime,
+  sectionId,
+}: Props = Astro.props;
+
+const section = await getEntry("sections", sectionId);
+---
+
+<div class="text-center">
+  <Image
+    loading={"eager"}
+    src={image}
+    alt={name}
+    width={256}
+    height={256}
+    quality={100}
+    class="mx-auto mb-4 w-64 h-64 sm:h-auto sm:w-auto rounded-2xl"
+  />
+
+  <h3 class="mb-1 text-2xl font-bold tracking-tight">{name}</h3>
+  <p class="text-sm mb-1">{section?.data.age} years</p>
+  <p>{meetingDay}</p>
+  <p>
+    {meetingStartTime} til {meetingEndTime}
+  </p>
+</div>

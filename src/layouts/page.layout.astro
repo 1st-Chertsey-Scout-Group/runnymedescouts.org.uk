@@ -3,42 +3,23 @@ import FooterNavigation from "@/components/footer-navigation.astro";
 import HeaderNavigation from "@/components/header-navigation.astro";
 import JoinUsCTA from "@/components/join-us-cta.astro";
 import BaseLayout from "@/layouts/base.layout.astro";
-import { cn } from "@/lib/utils";
 
 interface PageProps {
   title: string;
   description: string;
-
-  heading: string;
-  subHeading: string;
 }
 
-const { title, description, heading, subHeading }: PageProps =
+const { title, description}: PageProps =
   Astro.props.frontmatter || Astro.props;
 
 const currentPath = Astro.url.pathname;
 ---
 
 <BaseLayout title={title} description={description}>
-  <div class="container mx-auto">
-    <HeaderNavigation currentPath={currentPath} />
-
-    <main>
-      <section class="px-4 py-8 antialiased">
-        <div class="max-w-screen-md mx-auto">
-          <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center">
-            {heading}
-          </h2>
-          <p class="mb-8 lg:mb-16 font-light text-center sm:text-xl">
-            {subHeading}
-          </p>
-        </div>
-        <div class="mb-8 lg:mb-16">
-          <slot />
-        </div>
-      </section>
-    </main>
-  </div>
+  <HeaderNavigation currentPath={currentPath} />
+  <main>
+    <slot />
+  </main>
   <JoinUsCTA />
   <FooterNavigation currentPath={currentPath} />
 </BaseLayout>

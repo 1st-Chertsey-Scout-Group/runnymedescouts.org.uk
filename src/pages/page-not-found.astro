@@ -1,4 +1,10 @@
 ---
+import BlockBody from "@/components/block/block-body.astro";
+import BlockHeader from "@/components/block/block-header.astro";
+import BlockSeperator from "@/components/block/block-seperator.astro";
+import BlockSubHeader from "@/components/block/block-sub-header.astro";
+import BlockWrapper from "@/components/block/block-wrapper.astro";
+import Seperator from "@/components/seperator.astro";
 import Button from "@/components/ui/button.astro";
 import PageLayout from "@/layouts/page.layout.astro";
 import { ArrowLeft } from "lucide-react";
@@ -7,17 +13,25 @@ import { ArrowLeft } from "lucide-react";
 <PageLayout
     title="Page not found | Runnymede District Scouts"
     description="Page not found"
-    heading="404"
-    subHeading="Sorry, we can't find that page. You'll find lots to explore on the home page."
 >
-    <div class="max-w-screen-sm mx-auto">
-        <a href="/">
-            <Button
-                Icon={ArrowLeft}
-                type="button"
-                text="Back to homepage"
-                iconClassName="order-first"
-            />
-        </a>
-    </div>
+    <BlockWrapper id="page-not-found">
+        <BlockSeperator slot="seperator">
+            <Seperator loading="eager" />
+        </BlockSeperator>
+        <BlockHeader slot="header" className="text-primary"> 404 </BlockHeader>
+        <BlockSubHeader slot="subHeader">
+            Sorry, we can't find that page. You'll find lots to explore on the
+            home page.
+        </BlockSubHeader>
+        <BlockBody size="sm" slot="body">
+            <a href="/">
+                <Button
+                    Icon={ArrowLeft}
+                    type="button"
+                    text="Back to homepage"
+                    iconClassName="order-first"
+                />
+            </a>
+        </BlockBody>
+    </BlockWrapper>
 </PageLayout>
