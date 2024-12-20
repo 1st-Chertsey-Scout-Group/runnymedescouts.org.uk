@@ -1,0 +1,78 @@
+---
+import PageLayout from "@/layouts/page.layout.astro";
+import { getCollection } from "astro:content";
+import GroupUnitItem from "@/components/groups-and-units/group-unit-item.astro";
+import BlockBody from "@/components/block/block-body.astro";
+import BlockHeader from "@/components/block/block-header.astro";
+import BlockSeperator from "@/components/block/block-seperator.astro";
+import BlockSubHeader from "@/components/block/block-sub-header.astro";
+import BlockWrapper from "@/components/block/block-wrapper.astro";
+import Seperator from "@/components/seperator.astro";
+import type { CollectionEntry } from "astro:content";
+
+const groups = (await getCollection("groups")).filter(
+	(group: CollectionEntry<"groups">) => group.data.enabled,
+);
+const units = (await getCollection("units")).filter(
+	(group: CollectionEntry<"units">) => group.data.enabled,
+);
+---
+
+<PageLayout
+	title="Local Scout Groups & Units | Join Scouting in Runnymede"
+	description="Discover local scout groups and units within Runnymede. Learn about each group's activities, find meeting times, and connect with leaders to join the scouting adventure in your community."
+>
+	<BlockWrapper id="groups-and-units">
+		<BlockSeperator slot="seperator">
+			<Seperator loading="eager" />
+		</BlockSeperator>
+		<BlockHeader slot="header" className="text-primary"> Our groups and units </BlockHeader>
+		<BlockSubHeader slot="subHeader">
+			We have {groups.length} groups and {units.length} explorer units dotted
+			around runnymede. Find out more information on each group by visiting
+			their socials!
+		</BlockSubHeader>
+		<BlockBody size="xl" slot="body">
+			<div
+				class="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+			>
+				{
+					groups &&
+						groups.map(({ data, slug }) => (
+							<GroupUnitItem
+								type="group"
+								slug={slug}
+								name={data.name}
+								address={data.shortAddress}
+								mapLink={data.mapLink}
+								website={data.website}
+								contact={data.contact}
+								facebook={data.facebook}
+								image={data.image}
+							/>
+						))
+				}
+			</div>
+			<div
+				class="mt-8 lg:mt-16 grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+			>
+				{
+					units &&
+						units.map(({ data, slug }) => (
+							<GroupUnitItem
+								type="unit"
+								slug={slug}
+								name={data.name}
+								address={data.shortAddress}
+								mapLink={data.mapLink}
+								website={data.website}
+								contact={data.contact}
+								facebook={data.facebook}
+								image={data.image}
+							/>
+						))
+				}
+			</div>
+		</BlockBody>
+	</BlockWrapper>
+</PageLayout>

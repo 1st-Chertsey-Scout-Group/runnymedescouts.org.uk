@@ -2,31 +2,30 @@
 import { SITE_TITLE } from "@/lib/consts";
 import { Search } from "lucide-react";
 import Button from "./ui/button.astro";
+import BlockWrapper from "./block/block-wrapper.astro";
+import BlockHeader from "./block/block-header.astro";
+import BlockSubHeader from "./block/block-sub-header.astro";
+import BlockBody from "./block/block-body.astro";
 ---
 
-<section class="bg-primary text-primary-foreground">
-    <div class="py-8 px-4 mx-auto max-w-screen-md sm:py-16 lg:px-6">
-        <div class="max-w-screen-md text-center">
-            <h2 class="mb-4 text-4xl tracking-tight font-extrabold">
-                Want to get involved with Scouting?
-            </h2>
-            <p class="mb-8 font-light sm:text-xl">
-                If you want to get involved with Scouting as volunteer or gain
-                skills for life as a Squirrel, Beaver, Cub, Scout or Explorer
-                why not {SITE_TITLE}.
-            </p>
-            <div
-                class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4"
-            >
-                <a href="/groups-and-units" class="w-full">
-                    <Button
-                        Icon={Search}
-                        type="button"
-                        text="Find your local group"
-                        iconClassName="order-first"
-                    />
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+<BlockWrapper id="join-us" variant="primary" className="py-8 lg:py-16">
+    <BlockHeader slot="header">
+        Want to get involved with Scouting?
+    </BlockHeader>
+    <BlockSubHeader slot="subHeader">
+        If you want to get involved with Scouting as volunteer or gain skills
+        for life as a Squirrel, Beaver, Cub, Scout or Explorer why not {
+            SITE_TITLE
+        }.
+    </BlockSubHeader>
+    <BlockBody size="md" slot="body" className="mb-0 lg:mb-0">
+        <a href="/groups-and-units" class="w-full">
+            <Button
+                Icon={Search}
+                type="button"
+                text="Find your local group"
+                iconClassName="order-first"
+            />
+        </a>
+    </BlockBody>
+</BlockWrapper>

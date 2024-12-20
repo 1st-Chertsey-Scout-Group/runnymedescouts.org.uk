@@ -1,4 +1,10 @@
 ---
+import BlockBody from "@/components/block/block-body.astro";
+import BlockHeader from "@/components/block/block-header.astro";
+import BlockSeperator from "@/components/block/block-seperator.astro";
+import BlockSubHeader from "@/components/block/block-sub-header.astro";
+import BlockWrapper from "@/components/block/block-wrapper.astro";
+import Seperator from "@/components/seperator.astro";
 import Button from "@/components/ui/button.astro";
 import FormSelect from "@/components/ui/form-select.astro";
 import FormTextArea from "@/components/ui/form-text-area.astro";
@@ -10,59 +16,69 @@ import { SendHorizonalIcon } from "lucide-react";
 <PageLayout
     title="Contact Runnymede | Get Involved in Scouting Today"
     description="Get in touch with Runnymede. Whether you have questions about joining, events, or volunteering, our contact page provides all the information you need to reach out and connect with us."
-    heading="Contact Us"
-    subHeading="If you want to get involved with Scouting as a volunteer or gain skills for life as a Squirrel, Beaver, Cub, Scout or Explorer, or if you have any other questions about scouting in Runnymede, get in contact with us!"
 >
-    <div class="mx-auto max-w-screen-md">
-        <form
-            name="contact"
-            action="/functions/enquiry"
-            class="flex flex-col gap-8"
-        >
-            <FormTextBox
-                id="email"
-                type="email"
-                label="Your email"
-                placeholder="bear.grylls@scouts.org.uk"
-                required={true}
-            />
+    <BlockWrapper id="contact">
+        <BlockSeperator slot="seperator">
+            <Seperator loading="eager" />
+        </BlockSeperator>
+        <BlockHeader slot="header" className="text-primary"> Contact Us </BlockHeader>
+        <BlockSubHeader slot="subHeader">
+            If you want to get involved with Scouting as a volunteer or gain
+            skills for life as a Squirrel, Beaver, Cub, Scout or Explorer, or if
+            you have any other questions about scouting in Runnymede, get in
+            contact with us!
+        </BlockSubHeader>
+        <BlockBody size="md" slot="body">
+            <form
+                name="contact"
+                action="/functions/enquiry"
+                class="flex flex-col gap-8"
+            >
+                <FormTextBox
+                    id="email"
+                    type="email"
+                    label="Your email"
+                    placeholder="bear.grylls@scouts.org.uk"
+                    required={true}
+                />
 
-            <FormTextBox
-                id="name"
-                type="text"
-                label="Your name"
-                placeholder="Bear Grylls"
-                required={true}
-            />
+                <FormTextBox
+                    id="name"
+                    type="text"
+                    label="Your name"
+                    placeholder="Bear Grylls"
+                    required={true}
+                />
 
-            <FormSelect
-                id="subject"
-                label="Subject"
-                required={true}
-                options={[{ label: "General Enquiry" }]}
-            />
+                <FormSelect
+                    id="subject"
+                    label="Subject"
+                    required={true}
+                    options={[{ label: "General Enquiry" }]}
+                />
 
-            <input class="hidden" name="number" />
+                <input class="hidden" name="number" />
 
-            <FormTextArea
-                id="message"
-                label="Your message"
-                placeholder="your message..."
-                required={true}
-            />
+                <FormTextArea
+                    id="message"
+                    label="Your message"
+                    placeholder="your message..."
+                    required={true}
+                />
 
-            <Button
-                Icon={SendHorizonalIcon}
-                type="submit"
-                text="Send Message"
-            />
-            <div class="text-sm text-center">
-                We'll never share your details. Read our <a
-                    href="/privacy-policy"
-                    class="hover:underline underline-offset-2 text-primary"
-                    >Privacy Policy</a
-                >.
-            </div>
-        </form>
-    </div>
+                <Button
+                    Icon={SendHorizonalIcon}
+                    type="submit"
+                    text="Send Message"
+                />
+                <div class="text-sm text-center">
+                    We'll never share your details. Read our <a
+                        href="/privacy-policy"
+                        class="hover:underline underline-offset-2 text-primary"
+                        >Privacy Policy</a
+                    >.
+                </div>
+            </form>
+        </BlockBody>
+    </BlockWrapper>
 </PageLayout>

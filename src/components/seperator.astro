@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+
+import fleur from "../images/fleur-de-lis.svg";
+
+interface Props {
+    loading: "eager" | "lazy";
+}
+
+const { loading } = Astro.props;
+---
+
+<Image
+    loading={loading}
+    src={fleur}
+    alt={"fleur-de-lis"}
+    quality={100}
+    width="32"
+    class="mx-auto"
+/>

@@ -1,21 +1,49 @@
 ---
 import { cn } from "@/lib/utils";
 
+type Variant = "primary" | "link";
+type Size = "small" | "default";
+const variants: Record<Variant, string> = {
+  primary:
+    "bg-primary focus:ring-primary hover:border-primary hover:bg-white hover:text-primary",
+    link:
+    "bg-transparent text-primary focus:ring-primary hover:border-primary border-transparent hover:bg-primary hover:text-white",
+};
+
+const sizes: Record<Size, string> = {
+  default: "py-3 px-5 font-medium",
+  small: "py-1 text-sm",
+};
+
 interface Props {
   Icon: React.ElementType;
   type: "submit" | "reset" | "button";
   text: string;
+  variant?: Variant;
+  size?: Size;
 
   iconClassName?: string;
   textClassName?: string;
 }
 
-const { Icon, type, text, iconClassName, textClassName }: Props = Astro.props;
+const {
+  Icon,
+  type,
+  text,
+  iconClassName,
+  textClassName,
+  variant = "primary",
+  size = "default",
+}: Props = Astro.props;
 ---
 
 <button
   type={type}
-  class="flex gap-4 items-center border justify-center py-3 px-5 font-medium text-center text-white rounded-lg bg-primary w-full focus:ring-4 focus:outline-none focus:ring-primary hover:border-primary hover:bg-white hover:text-primary"
+  class={cn(
+    "flex gap-4 items-center border justify-center text-center text-white rounded-lg w-full focus:ring-4 focus:outline-none",
+    variants[variant],
+    sizes[size],
+  )}
 >
   <span class={textClassName}>
     {text}
