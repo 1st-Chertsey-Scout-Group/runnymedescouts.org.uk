@@ -2,13 +2,9 @@
 import PageLayout from "@/layouts/page.layout.astro";
 import { getCollection } from "astro:content";
 import GroupUnitItem from "@/components/groups-and-units/group-unit-item.astro";
-import BlockBody from "@/components/block/block-body.astro";
-import BlockHeader from "@/components/block/block-header.astro";
-import BlockSeperator from "@/components/block/block-seperator.astro";
-import BlockSubHeader from "@/components/block/block-sub-header.astro";
-import BlockWrapper from "@/components/block/block-wrapper.astro";
 import Seperator from "@/components/seperator.astro";
 import type { CollectionEntry } from "astro:content";
+import { Block } from "basecamp/components";
 
 const groups = (await getCollection("groups")).filter(
 	(group: CollectionEntry<"groups">) => group.data.enabled,
@@ -22,17 +18,19 @@ const units = (await getCollection("units")).filter(
 	title="Local Scout Groups & Units | Join Scouting in Runnymede"
 	description="Discover local scout groups and units within Runnymede. Learn about each group's activities, find meeting times, and connect with leaders to join the scouting adventure in your community."
 >
-	<BlockWrapper id="groups-and-units">
-		<BlockSeperator slot="seperator">
+	<Block.Wrapper id="groups-and-units">
+		<Block.Seperator slot="seperator">
 			<Seperator loading="eager" />
-		</BlockSeperator>
-		<BlockHeader slot="header" className="text-primary"> Our groups and units </BlockHeader>
-		<BlockSubHeader slot="subHeader">
+		</Block.Seperator>
+		<Block.Header slot="header" className="text-primary">
+			Our groups and units
+		</Block.Header>
+		<Block.SubHeader slot="subHeader">
 			We have {groups.length} groups and {units.length} explorer units dotted
 			around runnymede. Find out more information on each group by visiting
 			their socials!
-		</BlockSubHeader>
-		<BlockBody size="xl" slot="body">
+		</Block.SubHeader>
+		<Block.Body size="xl" slot="body">
 			<div
 				class="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
 			>
@@ -73,6 +71,6 @@ const units = (await getCollection("units")).filter(
 						))
 				}
 			</div>
-		</BlockBody>
-	</BlockWrapper>
+		</Block.Body>
+	</Block.Wrapper>
 </PageLayout>

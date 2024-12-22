@@ -1,24 +1,20 @@
 ---
 import { SITE_TITLE } from "@/lib/consts";
 import { Search } from "lucide-react";
-import Button from "./ui/button.astro";
-import BlockWrapper from "./block/block-wrapper.astro";
-import BlockHeader from "./block/block-header.astro";
-import BlockSubHeader from "./block/block-sub-header.astro";
-import BlockBody from "./block/block-body.astro";
+import { Block, Button } from "basecamp/components";
 ---
 
-<BlockWrapper id="join-us" variant="primary" className="py-8 lg:py-16">
-    <BlockHeader slot="header">
+<Block.Wrapper id="join-us" variant="primary" className="py-8 lg:py-16">
+    <Block.Header slot="header">
         Want to get involved with Scouting?
-    </BlockHeader>
-    <BlockSubHeader slot="subHeader">
+    </Block.Header>
+    <Block.SubHeader slot="subHeader">
         If you want to get involved with Scouting as volunteer or gain skills
         for life as a Squirrel, Beaver, Cub, Scout or Explorer why not {
             SITE_TITLE
         }.
-    </BlockSubHeader>
-    <BlockBody size="md" slot="body" className="mb-0 lg:mb-0">
+    </Block.SubHeader>
+    <Block.Body size="md" slot="body" className="mb-0 lg:mb-0">
         <a href="/groups-and-units" class="w-full">
             <Button
                 Icon={Search}
@@ -27,5 +23,5 @@ import BlockBody from "./block/block-body.astro";
                 iconClassName="order-first"
             />
         </a>
-    </BlockBody>
-</BlockWrapper>
+    </Block.Body>
+</Block.Wrapper>

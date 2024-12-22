@@ -6,12 +6,8 @@ import { Image } from "astro:assets";
 import homeLeft from "@/images/home-left.jpg";
 import homeRight from "@/images/home-right.jpg";
 import { getCollection, type CollectionEntry } from "astro:content";
-import BlockWrapper from "@/components/block/block-wrapper.astro";
-import BlockBody from "@/components/block/block-body.astro";
-import BlockHeader from "@/components/block/block-header.astro";
-import BlockSeperator from "@/components/block/block-seperator.astro";
-import BlockSubHeader from "@/components/block/block-sub-header.astro";
 import Seperator from "@/components/seperator.astro";
+import { Block } from "basecamp/components";
 
 const groups = (await getCollection("groups")).filter(
 	(group: CollectionEntry<"groups">) => group.data.enabled,
@@ -40,11 +36,11 @@ const stats: { label: string; value: string }[] = [
 	title="Welcome to Runnymede | Explore Scouting Opportunities"
 	description="Welcome to Runnymede! Join us in empowering young people through fun, adventure, and community service. Discover scouting opportunities, learn about upcoming events, and explore how to get involved."
 >
-	<BlockWrapper id="hero">
-		<BlockSeperator slot="seperator">
+	<Block.Wrapper id="hero">
+		<Block.Seperator slot="seperator">
 			<Seperator loading="eager" />
-		</BlockSeperator>
-		<BlockBody slot="body" size="xl">
+		</Block.Seperator>
+		<Block.Body slot="body" size="xl">
 			<div
 				class="gap-16 items-center py-8 px-4 lg:grid lg:grid-cols-2 lg:py-16 lg:px-6"
 			>
@@ -100,20 +96,20 @@ const stats: { label: string; value: string }[] = [
 					/>
 				</div>
 			</div>
-		</BlockBody>
-	</BlockWrapper>
+		</Block.Body>
+	</Block.Wrapper>
 
-	<BlockWrapper id="stats">
-		<BlockHeader slot="header" className="text-primary">
+	<Block.Wrapper id="stats">
+		<Block.Header slot="header" className="text-primary">
 			Home to scouting in Runnymede
-		</BlockHeader>
-		<BlockSubHeader slot="subHeader">
+		</Block.Header>
+		<Block.SubHeader slot="subHeader">
 			We bring together young people and dedicated volunteers across all
 			of our groups, creating a vibrant and supportive community. We've
 			inspired generations to grow, lead, and make a difference in their
 			communities.
-		</BlockSubHeader>
-		<BlockBody size="xl" slot="body">
+		</Block.SubHeader>
+		<Block.Body size="xl" slot="body">
 			<dl
 				class="grid grid-cols-1 gap-4 mx-auto mt-8 max-w-screen-md lg:mt-14 sm:grid-cols-3"
 			>
@@ -131,6 +127,6 @@ const stats: { label: string; value: string }[] = [
 						))
 				}
 			</dl>
-		</BlockBody>
-	</BlockWrapper>
+		</Block.Body>
+	</Block.Wrapper>
 </PageLayout>
