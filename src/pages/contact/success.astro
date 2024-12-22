@@ -1,12 +1,7 @@
 ---
-import BlockBody from "@/components/block/block-body.astro";
-import BlockHeader from "@/components/block/block-header.astro";
-import BlockSeperator from "@/components/block/block-seperator.astro";
-import BlockSubHeader from "@/components/block/block-sub-header.astro";
-import BlockWrapper from "@/components/block/block-wrapper.astro";
 import Seperator from "@/components/seperator.astro";
-import Button from "@/components/ui/button.astro";
 import PageLayout from "@/layouts/page.layout.astro";
+import { Block, Button } from "basecamp/components";
 import { ArrowLeft } from "lucide-react";
 ---
 
@@ -14,16 +9,18 @@ import { ArrowLeft } from "lucide-react";
     title="We have your message | Runnymede District Scouts"
     description="Form submit success"
 >
-    <BlockWrapper id="success">
-        <BlockSeperator slot="seperator">
+    <Block.Wrapper id="success">
+        <Block.Seperator slot="seperator">
             <Seperator loading="eager" />
-        </BlockSeperator>
-        <BlockHeader slot="header" className="text-primary"> We have your message </BlockHeader>
-        <BlockSubHeader slot="subHeader">
+        </Block.Seperator>
+        <Block.Header slot="header" className="text-primary">
+            We have your message
+        </Block.Header>
+        <Block.SubHeader slot="subHeader">
             Thank you for reaching out, we will get back to you as soon as
             possible
-        </BlockSubHeader>
-        <BlockBody size="sm" slot="body">
+        </Block.SubHeader>
+        <Block.Body size="sm" slot="body">
             <a href="/">
                 <Button
                     Icon={ArrowLeft}
@@ -32,7 +29,6 @@ import { ArrowLeft } from "lucide-react";
                     iconClassName="order-first"
                 />
             </a>
-        </BlockBody>
-    </BlockWrapper>
-
+        </Block.Body>
+    </Block.Wrapper>
 </PageLayout>

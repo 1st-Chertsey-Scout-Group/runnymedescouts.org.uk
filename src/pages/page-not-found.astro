@@ -1,12 +1,7 @@
 ---
-import BlockBody from "@/components/block/block-body.astro";
-import BlockHeader from "@/components/block/block-header.astro";
-import BlockSeperator from "@/components/block/block-seperator.astro";
-import BlockSubHeader from "@/components/block/block-sub-header.astro";
-import BlockWrapper from "@/components/block/block-wrapper.astro";
 import Seperator from "@/components/seperator.astro";
-import Button from "@/components/ui/button.astro";
 import PageLayout from "@/layouts/page.layout.astro";
+import { Block, Button } from "basecamp/components";
 import { ArrowLeft } from "lucide-react";
 ---
 
@@ -14,16 +9,18 @@ import { ArrowLeft } from "lucide-react";
     title="Page not found | Runnymede District Scouts"
     description="Page not found"
 >
-    <BlockWrapper id="page-not-found">
-        <BlockSeperator slot="seperator">
+    <Block.Wrapper id="page-not-found">
+        <Block.Seperator slot="seperator">
             <Seperator loading="eager" />
-        </BlockSeperator>
-        <BlockHeader slot="header" className="text-primary"> 404 </BlockHeader>
-        <BlockSubHeader slot="subHeader">
+        </Block.Seperator>
+        <Block.Header slot="header" className="text-primary">
+            404
+        </Block.Header>
+        <Block.SubHeader slot="subHeader">
             Sorry, we can't find that page. You'll find lots to explore on the
             home page.
-        </BlockSubHeader>
-        <BlockBody size="sm" slot="body">
+        </Block.SubHeader>
+        <Block.Body size="sm" slot="body">
             <a href="/">
                 <Button
                     Icon={ArrowLeft}
@@ -32,6 +29,6 @@ import { ArrowLeft } from "lucide-react";
                     iconClassName="order-first"
                 />
             </a>
-        </BlockBody>
-    </BlockWrapper>
+        </Block.Body>
+    </Block.Wrapper>
 </PageLayout>

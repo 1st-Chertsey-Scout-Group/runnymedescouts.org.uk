@@ -1,25 +1,42 @@
 ---
-import FooterNavigation from "@/components/footer-navigation.astro";
-import HeaderNavigation from "@/components/header-navigation.astro";
 import JoinUsCTA from "@/components/join-us-cta.astro";
 import BaseLayout from "@/layouts/base.layout.astro";
+import { FooterNavigation, HeaderNavigation } from "basecamp/components";
+
+import logo from "@/images/logo.png";
+import { SITE_TITLE } from "@/lib/consts";
+import { FOOTER_LINKS, HEADER_LINKS } from "@/lib/navigation";
 
 interface PageProps {
   title: string;
   description: string;
 }
 
-const { title, description}: PageProps =
+const { title, description }: PageProps =
   Astro.props.frontmatter || Astro.props;
 
 const currentPath = Astro.url.pathname;
 ---
 
 <BaseLayout title={title} description={description}>
-  <HeaderNavigation currentPath={currentPath} />
+  <HeaderNavigation
+    name={SITE_TITLE}
+    logo={logo}
+    logoAlt="Runnymede scouts logo"
+    links={HEADER_LINKS}
+    currentPath={currentPath}
+  />
   <main>
     <slot />
   </main>
   <JoinUsCTA />
-  <FooterNavigation currentPath={currentPath} />
+  <FooterNavigation
+    name={SITE_TITLE}
+    charityNumber={1039314}
+    logo={logo}
+    logoAlt="Runnymede scouts logo"
+    copyright="All Rights Reserved."
+    subtitle="Providing a positive impact in communities since 1974"
+    links={FOOTER_LINKS}
+  />
 </BaseLayout>

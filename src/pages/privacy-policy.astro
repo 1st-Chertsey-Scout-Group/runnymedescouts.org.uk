@@ -1,11 +1,7 @@
 ---
-import BlockBody from "@/components/block/block-body.astro";
-import BlockHeader from "@/components/block/block-header.astro";
-import BlockSeperator from "@/components/block/block-seperator.astro";
-import BlockWrapper from "@/components/block/block-wrapper.astro";
 import Seperator from "@/components/seperator.astro";
-import Button from "@/components/ui/button.astro";
 import PageLayout from "@/layouts/page.layout.astro";
+import { Block, Button } from "basecamp/components";
 import { ArrowLeft } from "lucide-react";
 ---
 
@@ -13,12 +9,14 @@ import { ArrowLeft } from "lucide-react";
     title="Page not found | Runnymede District Scouts"
     description="Page not found"
 >
-    <BlockWrapper id="privacy-policy">
-        <BlockSeperator slot="seperator">
+    <Block.Wrapper id="privacy-policy">
+        <Block.Seperator slot="seperator">
             <Seperator loading="eager" />
-        </BlockSeperator>
-        <BlockHeader slot="header" className="text-primary"> Privacy Policy </BlockHeader>
-        <BlockBody size="md" slot="body">
+        </Block.Seperator>
+        <Block.Header slot="header" className="text-primary">
+            Privacy Policy
+        </Block.Header>
+        <Block.Body size="md" slot="body">
             <p class="mb-2">
                 Runnymede District Scouts takes your privacy seriously. To
                 better protect your privacy we provide this privacy policy
@@ -120,6 +118,6 @@ import { ArrowLeft } from "lucide-react";
                     iconClassName="order-first"
                 />
             </a>
-        </BlockBody>
-    </BlockWrapper>
+        </Block.Body>
+    </Block.Wrapper>
 </PageLayout>

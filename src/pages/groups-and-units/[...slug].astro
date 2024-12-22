@@ -1,15 +1,10 @@
 ---
-import BlockBody from "@/components/block/block-body.astro";
-import BlockHeader from "@/components/block/block-header.astro";
-import BlockSeperator from "@/components/block/block-seperator.astro";
-import BlockSubHeader from "@/components/block/block-sub-header.astro";
-import BlockWrapper from "@/components/block/block-wrapper.astro";
-import GoogleMap from "@/components/google-map.astro";
 import SectionsList from "@/components/sections/sections-list.astro";
 import Seperator from "@/components/seperator.astro";
 import PageLayout from "@/layouts/page.layout.astro";
 import { cn } from "@/lib/utils";
 import { getCollection, type CollectionEntry } from "astro:content";
+import { Block, GoogleMap } from "basecamp/components";
 import { Facebook, Globe, Mail } from "lucide-react";
 
 export async function getStaticPaths() {
@@ -41,23 +36,23 @@ const {
     title={name + " | Local Scout Groups & Units | Join Scouting in Runnymede"}
     description="Discover local scout groups and units within Runnymede. Learn about each group's activities, find meeting times, and connect with leaders to join the scouting adventure in your community."
 >
-    <BlockWrapper id="success">
-        <BlockSeperator slot="seperator">
+    <Block.Wrapper id="success">
+        <Block.Seperator slot="seperator">
             <Seperator loading="eager" />
-        </BlockSeperator>
-        <BlockHeader slot="header" className="text-primary">
+        </Block.Seperator>
+        <Block.Header slot="header" className="text-primary">
             {name} Scout Group
-        </BlockHeader>
-        <BlockSubHeader slot="subHeader">
+        </Block.Header>
+        <Block.SubHeader slot="subHeader">
             {longAddress}
-        </BlockSubHeader>
-        <BlockBody slot="body" size="md" className="mb-0 lg:mb-0">
-            <GoogleMap mapUrl={mapUrl} mapTitle={"Google Maps for " + name} loading="eager" />
-        </BlockBody>
-    </BlockWrapper>
-    
-    <BlockWrapper id="socials">
-        <BlockBody slot="body" size="sm" className="mb-0 lg:mb-0">
+        </Block.SubHeader>
+        <Block.Body slot="body" size="md" className="mb-0 lg:mb-0">
+            <GoogleMap mapUrl={mapUrl} mapTitle={"Google Maps for " + name} />
+        </Block.Body>
+    </Block.Wrapper>
+
+    <Block.Wrapper id="socials">
+        <Block.Body slot="body" size="sm" className="mb-0 lg:mb-0">
             <ul class="flex justify-center space-x-4">
                 {
                     website && (
@@ -127,24 +122,25 @@ const {
                     "mt-4": !!website || !!facebook || !!contact,
                 })}
             >
-                Charity Number:&nbsp;<a class="hover:underline underline-offset-2 text-primary"
+                Charity Number:&nbsp;<a
+                    class="hover:underline underline-offset-2 text-primary"
                     href={"https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/" +
                         charityNumber +
                         "/charity-overview"}>{charityNumber}</a
                 >
             </div>
-        </BlockBody>
-    </BlockWrapper>
+        </Block.Body>
+    </Block.Wrapper>
 
-    <BlockWrapper id="sections" variant="alternative">
-        <BlockSeperator slot="seperator">
+    <Block.Wrapper id="sections" variant="alternative">
+        <Block.Seperator slot="seperator">
             <Seperator loading="eager" />
-        </BlockSeperator>
-        <BlockHeader slot="header" className="text-primary">
+        </Block.Seperator>
+        <Block.Header slot="header" className="text-primary">
             Sections
-        </BlockHeader>
-        <BlockBody slot="body" size="lg">
-            <SectionsList sections={sections} /></BlockBody
+        </Block.Header>
+        <Block.Body slot="body" size="lg">
+            <SectionsList sections={sections} /></Block.Body
         >
-    </BlockWrapper>
+    </Block.Wrapper>
 </PageLayout>
