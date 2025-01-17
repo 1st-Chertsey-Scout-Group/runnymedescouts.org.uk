@@ -8,7 +8,8 @@ const getAddressSchema = () =>
         city: z.string(),
         province: z.string(),
         postalCode: z.string(),
-        mapUrl: z.string()
+        longitude: z.number(),
+        latitude: z.number()
     })
 
 const getGroupSectionsSchema = (image: ImageFunction) => z.object({

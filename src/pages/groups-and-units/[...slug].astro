@@ -26,7 +26,7 @@ const {
     facebook,
     name,
     longAddress,
-    address: { mapUrl },
+    address: { longitude, latitude },
     sections,
     charityNumber,
 } = group.data;
@@ -47,7 +47,11 @@ const {
             {longAddress}
         </Block.SubHeader>
         <Block.Body slot="body" size="md" className="mb-0 lg:mb-0">
-            <GoogleMap mapUrl={mapUrl} mapTitle={"Google Maps for " + name} />
+            <GoogleMap
+                longitude={longitude}
+                latitude={latitude}
+                apiKey={import.meta.env.GOOGLE_MAPS_API_KEY}
+            />
         </Block.Body>
     </Block.Wrapper>
 

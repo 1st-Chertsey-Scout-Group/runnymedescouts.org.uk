@@ -12,7 +12,8 @@ address:
   city: Addlestone
   province: Surrey
   postalCode: KT15 1AD
-  mapUrl: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2490.921391037427!2d-0.5059369!3d51.3677418!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876764824d6f84f%3A0xa4c28b6153ea57f8!2s1st%204th%20Addlestone%20Scout%20Group!5e0!3m2!1sen!2suk!4v1734691232589!5m2!1sen!2suk
+  longitude: -0.5064130155303643
+  latitude: 51.36782851583367
 charityNumber: 279333
 sections:
 - name: Spinney Beavers

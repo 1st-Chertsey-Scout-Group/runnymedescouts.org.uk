@@ -12,7 +12,8 @@ address:
   city: Chertsey
   province: Surrey
   postalCode: KT16 0NQ
-  mapUrl: https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1481.1741548324055!2d-0.5373075312480634!3d51.3657805777593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNTHCsDIxJzU2LjgiTiAwwrAzMicxMy44Ilc!5e0!3m2!1sen!2suk!4v1734692649613!5m2!1sen!2suk
+  longitude: -0.5371964326065131
+  latitude: 51.36570042144349
 charityNumber: 3997492
 sections:
 - name: Beavers
