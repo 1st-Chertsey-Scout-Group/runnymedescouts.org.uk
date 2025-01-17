@@ -12,7 +12,8 @@ address:
   city: Egham
   province: Surrey
   postalCode: TW20 9EX
-  mapUrl: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2487.413216634761!2d-0.5475996999999999!3d51.432204799999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487670b373965f1b%3A0x55f378f9fcb75674!2sUnited%20Church%20of%20Egham!5e0!3m2!1sen!2suk!4v1734692016863!5m2!1sen!2suk
+  longitude: -0.5475316452775104
+  latitude: 51.43223173576608
 charityNumber: 273900
 sections:
 - name: Beavers

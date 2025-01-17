@@ -1,7 +1,20 @@
 ---
 import Seperator from "@/components/seperator.astro";
 import PageLayout from "@/layouts/page.layout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
 import { Block, Form } from "basecamp/components";
+import type { Option } from "basecamp/models";
+
+const groups: Option[] = (await getCollection("groups"))
+    .filter((group: CollectionEntry<"groups">) => group.data.enabled)
+    .map((g) => {
+        return { type: "option", label: g.data.name, id: g.slug };
+    });
+const units: Option[] = (await getCollection("units"))
+    .filter((group: CollectionEntry<"units">) => group.data.enabled)
+    .map((g) => {
+        return { type: "option", label: g.data.name, id: g.slug };
+    });
 ---
 
 <PageLayout
@@ -47,7 +60,15 @@ import { Block, Form } from "basecamp/components";
                     id="subject"
                     label="Subject"
                     required={true}
-                    options={[{ label: "General Enquiry" }]}
+                    options={[
+                        {
+                            label: "General Enquiry",
+                            type: "option",
+                            id: "enquiry",
+                        },
+                        { type: "group", label: "Groups", options: groups },
+                        { type: "group", label: "Units", options: units },
+                    ]}
                 />
 
                 <Form.TextArea

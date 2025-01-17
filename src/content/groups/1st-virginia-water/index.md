@@ -12,7 +12,8 @@ address:
   city: Virginia Water
   province: Surrey
   postalCode: GU25 4DL
-  mapUrl: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1244.4982772921246!2d-0.5669089!3d51.403118!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487679d8d4977ec9%3A0x67b2dc291d6cd39f!2s1st%20Virginia%20Water%20Scout%20Group!5e0!3m2!1sen!2suk!4v1734693866890!5m2!1sen!2suk
+  longitude: -0.5661492332503594
+  latitude: 51.403038215611275
 charityNumber: 1100646
 sections:
 - name: Beavers

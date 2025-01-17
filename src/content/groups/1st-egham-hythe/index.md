@@ -12,7 +12,8 @@ address:
   city: Egham
   province: Surrey
   postalCode: TW20 8BG
-  mapUrl: https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1243.8317864467895!2d-0.5317886!3d51.4276064!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48767732f05e50bf%3A0x226b6f2ad4a4dd59!2sEgham%20Hythe%20Scouts!5e0!3m2!1sen!2suk!4v1734692135320!5m2!1sen!2suk
+  longitude: -0.5311245886212906
+  latitude: 51.427692294145004
 charityNumber: 1000790
 sections:
 - name: Beavers

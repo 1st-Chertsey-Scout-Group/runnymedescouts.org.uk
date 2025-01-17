@@ -13,7 +13,8 @@ address:
   city: ''
   province: ''
   postalCode: ''
-  mapUrl: ''
+  longitude: 0
+  latitude: 0
 charityNumber: 0
 sections: []
 ---
