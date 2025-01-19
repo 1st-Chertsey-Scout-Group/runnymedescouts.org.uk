@@ -1,5 +1,5 @@
 import { type Handler, type HandlerEvent } from "@netlify/functions";
-import nodemailer from 'nodemailer';
+import nodemailer, { type SentMessageInfo } from 'nodemailer';
 
 
 interface ContactForm {
@@ -21,10 +21,18 @@ declare var process: {
 };
 
 export const handler: Handler = async (event: HandlerEvent, _) => {
+  if (event.httpMethod != "GET" || event.headers["purpose"] == "prefetch") {
+    return {
+      statusCode: 200
+    }
+  }
 
   processEnquiry(event)
-    .then((message) => console.log(message))
-    .catch((error) => console.log(error));
+    .then((res: SentMessageInfo) => {
+      console.debug(res);
+      console.debug("email sent")
+    })
+    .catch((error) => console.error(error));
 
   return {
     statusCode: 200,
@@ -51,52 +59,55 @@ export const handler: Handler = async (event: HandlerEvent, _) => {
 
 };
 
-function processEnquiry(event: HandlerEvent): Promise<string> {
+function processEnquiry(event: HandlerEvent): Promise<SentMessageInfo> {
+  const form = event.queryStringParameters as unknown as ContactForm;
 
-  return new Promise(async (resolve, reject) => {
+  console.debug("Checking environment variables")
+  if (!environmentVariablesAreConfigured()) {
+    console.error("Environment variables are not configured");
+    return Promise.reject("Environment variables are not configured");
+  }
 
-    const form = event.queryStringParameters as unknown as ContactForm;
+  console.debug("Checking request is from a valid domain")
+  if (!requestFromAValidDomain(event)) {
+    console.info("Request not from a valid domain");
+    return Promise.reject("Request not from a valid domain");
+  }
 
-    if (!environmentVariablesAreConfigured()) {
-      reject("Environment variables are not configured");
-      return;
-    }
+  console.debug("Checking the form doesn't have the bot honeypot set")
+  if (!isInvalid(form.number)) {
+    console.info("Potential bot");
+    return Promise.reject("Potential bot");
+  }
 
-    if (!requestFromAValidDomain(event)) {
-      reject("Request not from a valid domain");
-      return;
-    }
+  console.debug("Checking the form has been fully filled out")
+  if (
+    isInvalid(form.email) ||
+    isInvalid(form.name) ||
+    isInvalid(form.subject) ||
+    isInvalid(form.message)
+  ) {
+    console.info("Missing field properties");
+    return Promise.reject("Missing field properties");
+  }
 
-
-    if (!isInvalid(form.number)) {
-      reject("Potential bot");
-      return;
-    }
-
-    if (
-      isInvalid(form.email) ||
-      isInvalid(form.name) ||
-      isInvalid(form.subject) ||
-      isInvalid(form.message)
-    ) {
-      reject("Missing field properties");
-      return;
-    }
-
-    const sent = await sendEmail(
-      form
-    );
-
-    if (!sent) {
-      reject("Email didnt sent.");
-      return;
-    }
-
-
-    resolve("Successfully sent the email");
-    return;
+  const transporter = nodemailer.createTransport({
+    host: process.env.EMAIL_HOST,
+    port: process.env.EMAIL_PORT,
+    secure: true,
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASSWORD
+    },
   });
 
+  console.debug(`sending the email to ${form.subject}@${process.env.EMAIL_DOMAIN}`);
+  return transporter.sendMail({
+    from: process.env.EMAIL_USER,
+    to: `${form.subject}@${process.env.EMAIL_DOMAIN}`,
+    subject: `New Submission - ${process.env.EMAIL_DOMAIN}`,
+    html: emailBody(form, process.env.EMAIL_DOMAIN)
+  });
 }
 
 function environmentVariablesAreConfigured(): boolean {
@@ -148,30 +159,6 @@ function requestFromAValidDomain(event: HandlerEvent): boolean {
   return true;
 }
 
-async function sendEmail(
-  form: ContactForm,
-) {
-
-  const transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
-    port: process.env.EMAIL_PORT,
-    secure: true,
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASSWORD
-    },
-  });
-
-  transporter.sendMail({
-    from: process.env.EMAIL_USER,
-    to: `${form.subject}@${process.env.EMAIL_DOMAIN}`,
-    subject: `New Submission - ${process.env.EMAIL_DOMAIN}`,
-    html: emailBody(form, process.env.EMAIL_DOMAIN)
-  });
-
-  return true;
-
-}
 
 function isInvalid(str: string | undefined | null): boolean {
   return str == undefined || str == null || str.trim() == "";
