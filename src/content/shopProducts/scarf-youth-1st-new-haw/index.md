@@ -1,0 +1,12 @@
+---
+name: 1st New Haw Youth Scarf
+price: 5.00
+stocked: true
+tags:
+    - beavers
+    - cubs
+    - scouts
+    - scarfs
+images:
+    - scarf.jpg
+---

@@ -1,0 +1,4 @@
+---
+name: Trousers
+type: uniform
+---

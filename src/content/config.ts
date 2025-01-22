@@ -109,10 +109,33 @@ const eventsCollection = defineCollection({
         }),
 });
 
+const shopProductsCollection = defineCollection({
+    type: "content",
+    schema: ({ image }) =>
+        z.object({
+            name: z.string(),
+            price: z.number(),
+            stocked: z.boolean(),
+            tags: z.array(reference("shopTags")),
+            images: z.array(image())
+        }),
+});
+
+const shopTagsCollection = defineCollection({
+    type: "content",
+    schema: () =>
+        z.object({
+            name: z.string(),
+            type: z.enum(["section", "uniform", "misc"])
+        }),
+});
+
 export type GroupSection = z.infer<ReturnType<typeof getGroupSectionsSchema>>
 export const collections = {
     groups: groupsCollection,
     units: unitsCollection,
     events: eventsCollection,
-    sections: sectionsCollection
+    sections: sectionsCollection,
+    shopProducts: shopProductsCollection,
+    shopTags: shopTagsCollection
 };

@@ -1,0 +1,4 @@
+---
+name: Sweatshirts
+type: uniform
+---

@@ -1,0 +1,12 @@
+---
+name: 5th Addlestone Youth Scarf
+price: 3.50
+stocked: true
+tags:
+    - beavers
+    - cubs
+    - scouts
+    - scarfs
+images:
+    - scarf.jpg
+---
