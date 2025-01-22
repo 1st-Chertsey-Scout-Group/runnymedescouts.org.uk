@@ -7,4 +7,5 @@ tags:
     - sweatshirts
 images:
     - cub-sweatshirt.jpg
+order: 10
 ---

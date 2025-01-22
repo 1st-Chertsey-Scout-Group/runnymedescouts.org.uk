@@ -117,16 +117,20 @@ const shopProductsCollection = defineCollection({
             price: z.number(),
             stocked: z.boolean(),
             tags: z.array(reference("shopTags")),
-            images: z.array(image())
+            images: z.array(image()),
+            order: z.number()
         }),
 });
 
 const shopTagsCollection = defineCollection({
     type: "content",
-    schema: () =>
+    schema: ({ image }) =>
         z.object({
             name: z.string(),
-            type: z.enum(["section", "uniform", "misc"])
+            type: z.enum(["section", "uniform", "misc"]),
+            visible: z.boolean(),
+            image: image(),
+            order: z.number()
         }),
 });
 

@@ -7,4 +7,5 @@ tags:
     - shirts
 images:
     - leader-shirt.jpg
+order: 10
 ---

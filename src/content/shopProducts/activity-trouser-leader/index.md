@@ -7,6 +7,7 @@ tags:
     - trousers
 images:
     - activity-trousers.jpg
+order: 20
 ---
 
 Mens: 32inch  to 36inch

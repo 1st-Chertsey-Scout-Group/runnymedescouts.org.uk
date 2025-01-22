@@ -7,4 +7,5 @@ tags:
     - shirts
 images:
     - scout-shirt.jpg
+order: 10
 ---

@@ -7,4 +7,5 @@ tags:
     - shirts
 images:
     - explorer-shirt.jpg
+order: 10
 ---

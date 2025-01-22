@@ -8,6 +8,7 @@ tags:
     - scouts
 images:
     - belt-and-belt-buckle.jpg
+order: 20
 ---
 
 Young Leaders belts can only be ordered and awarded by District

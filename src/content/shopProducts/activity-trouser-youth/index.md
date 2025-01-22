@@ -6,9 +6,11 @@ tags:
     - beavers
     - cubs
     - scouts
+    - explorers
     - trousers
 images:
     - activity-trousers.jpg
+order: 20
 ---
 
 Optional

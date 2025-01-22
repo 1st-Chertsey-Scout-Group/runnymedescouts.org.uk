@@ -7,4 +7,5 @@ tags:
     - polos
 images:
     - beaver-polo.jpg
+order: 10
 ---

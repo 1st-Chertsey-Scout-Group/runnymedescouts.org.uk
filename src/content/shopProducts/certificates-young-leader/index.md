@@ -6,7 +6,8 @@ tags:
     - young-leaders
     - extras
 images:
-    - young-leader-investiture.jpg
+    - young-leaders-certificate.jpg
+order: 20
 ---
 
 Pack of 10

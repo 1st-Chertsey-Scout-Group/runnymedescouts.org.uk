@@ -7,4 +7,5 @@ tags:
     - polos
 images:
     - cub-polo.jpg
+order: 10
 ---

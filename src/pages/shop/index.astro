@@ -1,0 +1,52 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "@/layouts/page.layout.astro";
+import { Block, Seperator } from "basecamp/components";
+import { Image } from "astro:assets";
+
+const sectionTags = (await getCollection("shopTags")).filter(
+    (tag) => tag.data.type == "section",
+);
+
+const uniformTags = (await getCollection("shopTags")).filter(
+    (tag) => tag.data.type == "uniform",
+);
+---
+
+<PageLayout
+    title="Uniform Shop"
+    description="Discover high-quality Scout uniforms and accessories at the Runnymede Scout District Uniform Shop. Affordable prices, official supplies, and friendly service to support your Scouting journey!"
+>
+    <Block.Wrapper id="shop">
+        <Block.Seperator slot="seperator">
+            <Seperator loading="eager" />
+        </Block.Seperator>
+        <Block.Header slot="header" className="text-primary">
+            Uniform Shop
+        </Block.Header>
+        <Block.SubHeader slot="subHeader"> Shop by Section </Block.SubHeader>
+        <Block.Body size="xl" slot="body">
+            <div class="flex gap-4 justify-center flex-wrap">
+                {
+                    sectionTags &&
+                        sectionTags.map((tag) => (
+                            <a
+                                href={"/shop/" + tag.slug}
+                                class="flex flex-col items-center px-4 py-2"
+                            >
+                                <Image
+                                    src={tag.data.image}
+                                    alt={tag.data.name}
+                                    width={128}
+                                    height={128}
+                                    quality={100}
+                                    class="mx-auto mb-4 w-64 h-64 sm:h-auto sm:w-auto rounded-2xl"
+                                />
+                                <div>{tag.data.name}</div>
+                            </a>
+                        ))
+                }
+            </div>
+        </Block.Body>
+    </Block.Wrapper>
+</PageLayout>

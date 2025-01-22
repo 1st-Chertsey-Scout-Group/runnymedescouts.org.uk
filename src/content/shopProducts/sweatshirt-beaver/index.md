@@ -7,4 +7,5 @@ tags:
     - sweatshirts
 images:
     - beaver-sweatshirt.jpg
+order: 10
 ---

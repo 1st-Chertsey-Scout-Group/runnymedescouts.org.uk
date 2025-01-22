@@ -7,6 +7,7 @@ tags:
     - extras
 images:
     - cub-investiture.jpg
+order: 20
 ---
 
 Pack of 10
