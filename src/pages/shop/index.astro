@@ -4,13 +4,13 @@ import PageLayout from "@/layouts/page.layout.astro";
 import { Block, Seperator } from "basecamp/components";
 import { Image } from "astro:assets";
 
-const sectionTags = (await getCollection("shopTags")).filter(
-    (tag) => tag.data.type == "section",
-);
+const sectionTags = (await getCollection("shopTags"))
+    .filter((tag) => tag.data.type == "section")
+    .sort((a, b) => a.data.order - b.data.order);
 
-const uniformTags = (await getCollection("shopTags")).filter(
-    (tag) => tag.data.type == "uniform",
-);
+const uniformTags = (await getCollection("shopTags"))
+    .filter((tag) => tag.data.type == "uniform")
+    .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <PageLayout
