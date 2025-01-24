@@ -10,6 +10,12 @@ interface Props {
 const currentPath = Astro.url.pathname;
 
 const { title, description } = Astro.props;
+
+declare global {
+  interface Window {
+    goatcounter: any;
+  }
+}
 ---
 
 <!-- =====================================================================
@@ -39,10 +45,23 @@ Our website's code is hosted on GitHub! You can explore, download, and contribut
     <meta name="generator" content={Astro.generator} />
     <title>{title} | {SITE_TITLE}</title>
     <ClientRouter />
+    <script define:vars={{ currentPath: currentPath }}>
+      document.addEventListener(
+        "astro:page-load",
+        () => {
+          window.goatcounter.count({
+            path: currentPath,
+          });
+        },
+        { once: true },
+      );
+    </script>
     <script
+      is:inline
+      data-goatcounter-settings='{"no_onload": true}'
       data-goatcounter="https://runnymedescouts.goatcounter.com/count"
       async
-      src="//gc.zgo.at/count.js"></script>
+      src="/gc.count.js"></script>
   </head>
   <body>
     <slot />
