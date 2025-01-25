@@ -3,7 +3,7 @@ name: Young Leader Certificates
 price: 5.00
 stocked: true
 tags:
-    - young-leaders
+    - explorers
     - extras
 images:
     - young-leaders-certificate.jpg

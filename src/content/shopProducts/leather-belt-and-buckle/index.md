@@ -3,7 +3,7 @@ name: Leather Belt and Buckle
 price: 20.00
 stocked: true
 tags:
-    - young-leaders
+    - explorers
     - leaders
     - scouts
 images:

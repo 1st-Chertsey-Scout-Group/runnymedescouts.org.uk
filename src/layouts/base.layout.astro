@@ -45,7 +45,7 @@ Our website's code is hosted on GitHub! You can explore, download, and contribut
     <meta name="generator" content={Astro.generator} />
     <title>{title} | {SITE_TITLE}</title>
     <ClientRouter />
-    <script define:vars={{ currentPath: currentPath }}>
+    <script is:inline define:vars={{ currentPath: currentPath }}>
       document.addEventListener(
         "astro:page-load",
         () => {

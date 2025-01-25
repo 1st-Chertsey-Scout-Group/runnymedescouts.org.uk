@@ -1,9 +1,13 @@
 ---
-import PageLayout from "@/layouts/page.layout.astro";
+import ShopLayout from "@/layouts/shop.layout.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
-import { Block, Button, Seperator } from "basecamp/components";
-import { ArrowLeft, Clock, Package, ShoppingBasket } from "lucide-react";
+import { Block, Seperator } from "basecamp/components";
+import { Clock, Package } from "lucide-react";
 import { Image } from "astro:assets";
+import {
+    AddToCartButton,
+    AddToCartButtonFallback,
+} from "@/components/shop/add-to-cart-button";
 
 export async function getStaticPaths() {
     const tagsCollection: CollectionEntry<"shopTags">[] =
@@ -16,34 +20,31 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"shopTags">;
 
 const tag = Astro.props;
+const { Content } = await tag.render();
 
 const slug = tag.slug;
-const { name, type } = tag.data;
+const { name, order } = tag.data;
 
 const products = (await getCollection("shopProducts"))
     .filter((product) => product.data.tags.some((tag) => tag.id == slug))
-    .sort((a, b) => a.data.order - b.data.order);
+    .sort((a, b) => {
+        if (a.data.order !== b.data.order) {
+            return a.data.order - b.data.order;
+        }
+        return a.data.name.localeCompare(b.data.name);
+    });
 ---
 
-<PageLayout title={name}>
-    <Block.Wrapper id="shop">
+<ShopLayout title={name}>
+    <Block.Wrapper id="shop" className="pt-0">
         <Block.Seperator slot="seperator">
             <Seperator loading="eager" />
         </Block.Seperator>
         <Block.Header slot="header" className="text-primary">
             {name} Uniform
         </Block.Header>
-        <Block.SubHeader slot="subHeader">
-            <a href="/shop">
-                <Button
-                    Icon={ArrowLeft}
-                    text="Back to Categories"
-                    type="button"
-                    variant="link"
-                    size="small"
-                    iconClassName="order-first"
-                />
-            </a>
+        <Block.SubHeader slot="subHeader" tag="div">
+            <Content />
         </Block.SubHeader>
         <Block.Body size="xl" slot="body">
             <section class="py-8 antialiased md:py-12">
@@ -111,13 +112,14 @@ const products = (await getCollection("shopProducts"))
                                                     )}
                                                 </p>
                                                 <div class="flex-1">
-                                                    <Button
-                                                        Icon={ShoppingBasket}
-                                                        text="Add to Cart"
-                                                        type="button"
-                                                        size="small"
-                                                        iconClassName="order-first"
-                                                    />
+                                                    <AddToCartButton
+                                                        client:only="react"
+                                                        productId={product.slug}
+                                                    >
+                                                        <div slot="fallback">
+                                                            <AddToCartButtonFallback />
+                                                        </div>
+                                                    </AddToCartButton>
                                                 </div>
                                             </div>
                                         </div>
@@ -129,4 +131,4 @@ const products = (await getCollection("shopProducts"))
             </section>
         </Block.Body>
     </Block.Wrapper>
-</PageLayout>
+</ShopLayout>

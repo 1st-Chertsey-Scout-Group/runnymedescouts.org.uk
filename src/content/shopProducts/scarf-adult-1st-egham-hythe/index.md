@@ -1,6 +1,6 @@
 ---
-name: 1st Egham Adult Scarf
-price: 6.50
+name: 1st Egham Hythe Adult Scarf
+price: 7.00
 stocked: false
 tags:
     - leaders

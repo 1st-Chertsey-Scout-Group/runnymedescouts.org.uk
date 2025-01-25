@@ -24,6 +24,11 @@ export default {
 				foreground: "var(--primary-foreground)",
 			},
 
+			danger: {
+				DEFAULT: "var(--danger)",
+				foreground: "var(--danger-foreground)",
+			},
+
 			input: {
 				DEFAULT: "var(--input)",
 				border: "var(--input-border)",

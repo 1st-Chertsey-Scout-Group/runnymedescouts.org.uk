@@ -1,23 +1,19 @@
 ---
 import { getCollection } from "astro:content";
-import PageLayout from "@/layouts/page.layout.astro";
+import ShopLayout from "@/layouts/shop.layout.astro";
 import { Block, Seperator } from "basecamp/components";
 import { Image } from "astro:assets";
 
 const sectionTags = (await getCollection("shopTags"))
     .filter((tag) => tag.data.type == "section")
     .sort((a, b) => a.data.order - b.data.order);
-
-const uniformTags = (await getCollection("shopTags"))
-    .filter((tag) => tag.data.type == "uniform")
-    .sort((a, b) => a.data.order - b.data.order);
 ---
 
-<PageLayout
+<ShopLayout
     title="Uniform Shop"
     description="Discover high-quality Scout uniforms and accessories at the Runnymede Scout District Uniform Shop. Affordable prices, official supplies, and friendly service to support your Scouting journey!"
 >
-    <Block.Wrapper id="shop">
+    <Block.Wrapper id="shop" className="pt-0">
         <Block.Seperator slot="seperator">
             <Seperator loading="eager" />
         </Block.Seperator>
@@ -40,7 +36,7 @@ const uniformTags = (await getCollection("shopTags"))
                                     width={128}
                                     height={128}
                                     quality={100}
-                                    class="mx-auto mb-4 w-64 h-64 sm:h-auto sm:w-auto rounded-2xl"
+                                    class="mx-auto mb-4 sm:h-auto sm:w-auto rounded-2xl"
                                 />
                                 <div>{tag.data.name}</div>
                             </a>
@@ -49,4 +45,4 @@ const uniformTags = (await getCollection("shopTags"))
             </div>
         </Block.Body>
     </Block.Wrapper>
-</PageLayout>
+</ShopLayout>

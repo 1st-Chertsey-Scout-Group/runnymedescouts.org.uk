@@ -5,7 +5,7 @@ stocked: true
 tags:
     - scouts
     - leaders
-    - young-leaders
+    - explorers
     - extras
 images:
     - leather-woggle.jpg

@@ -29,6 +29,9 @@
         --input: #f9fafb;
         --input-border: #d1d5db;
         --input-foreground: #111827;
+
+        --danger: #e74c3c;
+        --danger-foreground: #ffffff;
     }
 
 
@@ -36,10 +39,11 @@
         @apply underline underline-offset-2 text-primary
     }
 
-    html{
+    html {
         @apply bg-alternative
     }
-    body{
-        @apply bg-background 
+
+    body {
+        @apply bg-background
     }
 }
