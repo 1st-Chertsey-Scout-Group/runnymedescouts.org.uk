@@ -24,7 +24,7 @@ const tag = Astro.props;
 const { Content } = await tag.render();
 
 const slug = tag.slug;
-const { name, order } = tag.data;
+const { name } = tag.data;
 
 const products = (await getCollection("shopProducts"))
     .filter((product) => product.data.tags.some((tag) => tag.id == slug))

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useCatalogue, type Product } from "./state/catalogue.store";
 
 type QuantitySelectorProps = {

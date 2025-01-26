@@ -1,8 +1,6 @@
-import { useStore } from "@nanostores/react";
-import { $basket, useBasket } from "./state/basket.store";
-import { $catalogue, useCatalogue, type Product } from "./state/catalogue.store";
+import { useBasket } from "./state/basket.store";
+import { useCatalogue } from "./state/catalogue.store";
 import { QuantitySelector } from "./quantity-selector";
-import { RemoveButton } from "./remove-button";
 import { formatPrice } from "@/lib/utils";
 import { Clock, Package } from "lucide-react";
 

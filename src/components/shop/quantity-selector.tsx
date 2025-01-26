@@ -11,11 +11,13 @@ export const QuantitySelector: React.FC<QuantitySelectorProps> = ({ productId })
     const quantity = basket.actions.quantity(productId);
 
 
-    const handleDecrement = (e: React.FormEvent) => {
-        basket.actions.decrementQuantity(productId);
+    const handleDecrement = (_: React.FormEvent) => {
+        if (quantity != undefined) {
+            basket.actions.decrementQuantity(productId);
+        }
     }
 
-    const handleIncrement = (e: React.FormEvent) => {
+    const handleIncrement = (_: React.FormEvent) => {
         if (quantity != undefined) {
             basket.actions.incrementQuantity(productId);
         }

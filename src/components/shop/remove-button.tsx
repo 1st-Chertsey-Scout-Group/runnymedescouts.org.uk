@@ -9,7 +9,7 @@ type RemoveButtonProps = {
 export const RemoveButton: React.FC<RemoveButtonProps> = ({ productId }) => {
     const basket = useBasket();
 
-    const handleRemove = (e: React.FormEvent) => {
+    const handleRemove = (_: React.FormEvent) => {
         basket.actions.removeFromBasket(productId);
     }
 

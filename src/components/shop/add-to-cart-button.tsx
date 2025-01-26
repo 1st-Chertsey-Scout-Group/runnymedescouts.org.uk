@@ -1,6 +1,6 @@
 import { cn } from "basecamp/libs";
 import { useBasket } from "./state/basket.store";
-import { Minus, Plus, ShoppingBasket, Trash, Trash2 } from "lucide-react";
+import { ShoppingBasket } from "lucide-react";
 import { QuantitySelector } from "./quantity-selector";
 import { RemoveButton } from "./remove-button";
 
@@ -13,14 +13,14 @@ export const AddToCartButton: React.FC<AddToCartButtonProps> = ({ productId }) =
 
     const isInBasket = basket.actions.isInBasket(productId);
 
-    const handleAdd = (e: React.FormEvent) => {
+    const handleAdd = (_: React.FormEvent) => {
         basket.actions.addToBasket(productId);
     }
 
     if (isInBasket) {
         return (
             <div className="flex">
-                <QuantitySelector productId={productId} deleteIfZero={true} />
+                <QuantitySelector productId={productId} />
                 <RemoveButton productId={productId} />
             </div>
         )

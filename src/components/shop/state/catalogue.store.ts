@@ -1,6 +1,5 @@
 import { persistentAtom } from "@nanostores/persistent";
 import { useStore } from "@nanostores/react";
-import { atom } from "nanostores";
 
 export type Product = {
     id: string;
