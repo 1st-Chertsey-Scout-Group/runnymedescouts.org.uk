@@ -1,10 +1,205 @@
 ---
+import {
+    SummaryItems,
+    SummaryItemsFallback,
+} from "@/components/shop/summary-items";
+import { TotalPrice, TotalPriceFallback } from "@/components/shop/total-price";
 import ShopLayout from "@/layouts/shop.layout.astro";
+import { getCollection } from "astro:content";
+import { Block, Button, Form, Seperator } from "basecamp/components";
+import { type Option, type OptionGroup } from "basecamp/models";
+import { ArrowLeft, Truck } from "lucide-react";
+
+const groups = await getCollection("groups");
+const units = await getCollection("units");
+
+const groupUnitOptions: (Option | OptionGroup)[] = [];
+groupUnitOptions.unshift({
+    id: "",
+    label: "--- Please Select ---",
+    type: "option",
+});
+groupUnitOptions.push({
+    type: "group",
+    label: "Groups",
+    options: groups.map((g) => {
+        return {
+            id: g.slug,
+            label: g.data.name,
+            type: "option",
+        };
+    }),
+});
+
+groupUnitOptions.push({
+    type: "group",
+    label: "Units",
+    options: units.map((u) => {
+        return {
+            id: u.slug,
+            label: u.data.name,
+            type: "option",
+        };
+    }),
+});
+
+const sections = await getCollection("sections");
+const sectionOptions: Option[] = sections
+    .sort((a, b) => {
+        return a.data.order - b.data.order;
+    })
+    .map((g) => {
+        return {
+            id: g.id,
+            label: g.data.name,
+            type: "option",
+        };
+    });
+
+sectionOptions.unshift({
+    id: "",
+    label: "--- Please Select ---",
+    type: "option",
+});
 ---
 
 <ShopLayout
     title="Uniform Shop Basket"
     description="Discover high-quality Scout uniforms and accessories at the Runnymede Scout District Uniform Shop. Affordable prices, official supplies, and friendly service to support your Scouting journey!"
 >
-    hi
+    <Block.Wrapper id="basket" className="pt-0">
+        <Block.Seperator slot="seperator">
+            <Seperator loading="eager" />
+        </Block.Seperator>
+        <Block.Header slot="header" className="text-primary">
+            Your basket
+        </Block.Header>
+        <Block.SubHeader slot="subHeader" tag="p">
+            Please note that by submitting this form, you are <span
+                class="font-bold">requesting uniform items</span
+            >. This is not a purchase and requests are subject to stock
+            availability. No payment will be taken at this stage.
+        </Block.SubHeader>
+        <Block.Body size="md" slot="body">
+            <section class="antialiased">
+                <form action="#" class="px-4 2xl:px-0">
+                    <div
+                        class="mt-6 space-y-4 border-b border-t border-alternative-dark py-8 sm:mt-8"
+                    >
+                        <div class="space-y-4">
+                            <h2 class="text-xl font-semibold">
+                                Contact Information
+                            </h2>
+
+                            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                <Form.TextBox
+                                    id="name"
+                                    type="text"
+                                    label="Your name"
+                                    required={true}
+                                    placeholder="Bear Grylls"
+                                />
+
+                                <Form.TextBox
+                                    id="name"
+                                    type="text"
+                                    label="Your young person's name"
+                                    required={false}
+                                    placeholder="Jesse Grylls"
+                                />
+                            </div>
+
+                            <div class="grid grid-cols-1 gap-4">
+                                <Form.TextBox
+                                    id="email"
+                                    type="email"
+                                    label="Your email"
+                                    required={true}
+                                    placeholder="bear@scouts.org.uk"
+                                />
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <h2 class="text-xl font-semibold">
+                                Order Information
+                            </h2>
+
+                            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                <Form.Select
+                                    id="groupunit"
+                                    label="Your group/unit"
+                                    required={true}
+                                    options={groupUnitOptions}
+                                />
+
+                                <Form.Select
+                                    id="section"
+                                    label="Your section"
+                                    required={true}
+                                    options={sectionOptions}
+                                />
+                            </div>
+
+                            <div class="grid grid-cols-1 gap-4">
+                                <Form.TextArea
+                                    id="additional"
+                                    label="Additional information"
+                                    placeholder="Please include any specific details or requirements related to your request (e.g., size preferences)"
+                                    required={false}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <div
+                            class="relative overflow-x-auto border-b border-alternative-dark"
+                        >
+                            <SummaryItems client:only="react">
+                                <SummaryItemsFallback slot="fallback" />
+                            </SummaryItems>
+                        </div>
+
+                        <div class="mt-4 space-y-6">
+                            <div class="space-y-4">
+                                <div class="space-y-2">
+                                    <dl
+                                        class="flex items-center justify-end gap-4"
+                                    >
+                                        <dt class="text-base font-bold">Total</dt>
+                                        <dd class="text-base font-bold pr-4">
+                                            <TotalPrice client:only="react">
+                                                <TotalPriceFallback
+                                                    slot="fallback"
+                                                />
+                                            </TotalPrice>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+
+                            <div class="gap-4 sm:flex sm:items-center">
+                                <a href="/shop" class="w-full">
+                                    <Button
+                                        Icon={ArrowLeft}
+                                        text="Return to Shop"
+                                        type="button"
+                                        variant="link"
+                                        iconClassName="order-first"
+                                    />
+                                </a>
+
+                                <Button
+                                    Icon={Truck}
+                                    text="Send the order"
+                                    type="button"
+                                    iconClassName="order-last"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </Block.Body>
+    </Block.Wrapper>
 </ShopLayout>

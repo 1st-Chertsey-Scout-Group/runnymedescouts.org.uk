@@ -7,6 +7,8 @@ import PageLayout from "./page.layout.astro";
 import { Button } from "basecamp/components";
 import { ArrowLeft } from "lucide-react";
 import { cn } from "basecamp/libs";
+import { getCollection } from "astro:content";
+import { CatalogueStorer } from "@/components/shop/catalogue-storer";
 
 interface PageProps {
     title: string;
@@ -19,9 +21,20 @@ const { title, description }: PageProps =
 const currentPath = Astro.url.pathname;
 
 const isShopHome = currentPath == "/shop";
+
+const products = (await getCollection("shopProducts")).map((p) => {
+    return {
+        id: p.slug,
+        name: p.data.name,
+        price: p.data.price,
+        stocked: p.data.stocked,
+        image: p.data.images[0],
+    };
+});
 ---
 
 <PageLayout title={title} description={description}>
+    <CatalogueStorer client:only="react" products={products} />
     <div
         class={cn("max-w-screen-md mx-auto flex pt-8 pr-4 text-right", {
             "justify-between": !isShopHome,
@@ -30,7 +43,7 @@ const isShopHome = currentPath == "/shop";
     >
         {
             !isShopHome && (
-                <a href="/shop" class="w-1/4">
+                <a href="/shop" class="w-1/2">
                     <Button
                         Icon={ArrowLeft}
                         text="Back to Shop"
@@ -45,9 +58,7 @@ const isShopHome = currentPath == "/shop";
 
         <a href="/shop/basket" class="text-foreground hover:text-primary">
             <ViewCartButton client:only="react">
-                <div slot="fallback">
-                    <ViewCartButtonFallback />
-                </div>
+                <ViewCartButtonFallback slot="fallback" />
             </ViewCartButton></a
         >
     </div>

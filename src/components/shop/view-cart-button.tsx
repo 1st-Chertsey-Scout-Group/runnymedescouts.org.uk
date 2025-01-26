@@ -8,7 +8,7 @@ type ViewCartButtonProps = {
 export const ViewCartButton: React.FC<ViewCartButtonProps> = ({ }) => {
     const basket = useBasket();
 
-    const totalQuantity = basket.totalQuantity();
+    const totalQuantity = basket.actions.totalQuantity();
 
     return (
         <div className="relative inline-block">

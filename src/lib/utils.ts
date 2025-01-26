@@ -13,3 +13,7 @@ export function slugify(str: string) {
         .replace(/-+/g, '-'); // remove consecutive hyphens
     return str;
 }
+
+export function formatPrice(price: number) {
+    return `£${price.toFixed(2)}`;
+}

@@ -20,7 +20,9 @@ const sectionTags = (await getCollection("shopTags"))
         <Block.Header slot="header" className="text-primary">
             Uniform Shop
         </Block.Header>
-        <Block.SubHeader slot="subHeader"> Shop by Section </Block.SubHeader>
+        <Block.SubHeader slot="subHeader" tag="p">
+            Shop by Section
+        </Block.SubHeader>
         <Block.Body size="xl" slot="body">
             <div class="flex gap-4 justify-center flex-wrap">
                 {

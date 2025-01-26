@@ -8,6 +8,7 @@ import {
     AddToCartButton,
     AddToCartButtonFallback,
 } from "@/components/shop/add-to-cart-button";
+import { formatPrice } from "@/lib/utils";
 
 export async function getStaticPaths() {
     const tagsCollection: CollectionEntry<"shopTags">[] =
@@ -106,9 +107,8 @@ const products = (await getCollection("shopProducts"))
 
                                             <div class="mt-4 flex flex-col gap-4">
                                                 <p class="text-2xl font-extrabold leading-tight">
-                                                    £
-                                                    {product.data.price.toFixed(
-                                                        2,
+                                                    {formatPrice(
+                                                        product.data.price,
                                                     )}
                                                 </p>
                                                 <div class="flex-1">
@@ -116,9 +116,7 @@ const products = (await getCollection("shopProducts"))
                                                         client:only="react"
                                                         productId={product.slug}
                                                     >
-                                                        <div slot="fallback">
-                                                            <AddToCartButtonFallback />
-                                                        </div>
+                                                        <AddToCartButtonFallback slot="fallback" />
                                                     </AddToCartButton>
                                                 </div>
                                             </div>

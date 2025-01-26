@@ -71,16 +71,18 @@ const totalQuantity = () => {
 }
 
 export const useBasket = () => {
-    const basket = useStore($basket);
+    const store = useStore($basket);
 
     return {
-        ...basket,
-        isInBasket,
-        quantity,
-        addToBasket,
-        removeFromBasket,
-        decrementQuantity,
-        incrementQuantity,
-        totalQuantity
+        store,
+        actions: {
+            isInBasket,
+            quantity,
+            addToBasket,
+            removeFromBasket,
+            decrementQuantity,
+            incrementQuantity,
+            totalQuantity
+        }
     }
 }
