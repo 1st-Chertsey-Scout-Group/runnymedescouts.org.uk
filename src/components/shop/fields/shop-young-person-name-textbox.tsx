@@ -7,16 +7,15 @@ type ShopYoungPersonNameTextboxProps = {
 export const ShopYoungPersonNameTextbox: React.FC<ShopYoungPersonNameTextboxProps> = () => {
     const id = useId();
     const contact = useContact();
-    const [dirty, setDirty] = useState(false);
+    const [_, setDirty] = useState(false);
 
     const youngPersonName = contact.youngPersonName;
 
     const handleChange = (e: React.ChangeEvent) => {
-        useState(true);
         contact.actions.updateYoungPersonName((e.target as HTMLInputElement).value)
     }
 
-    const handleBlur = (e: React.FocusEvent) => {
+    const handleBlur = (_: React.FocusEvent) => {
         setDirty(true);
     }
 

@@ -1,6 +1,5 @@
 import { useId, useState } from "react";
 import { useContact } from "../state/contact.store";
-import { isNullOrWhiteSpace } from "@/lib/utils";
 
 type ShopTermsCheckboxProps = {
 };
@@ -12,11 +11,10 @@ export const ShopTermsCheckbox: React.FC<ShopTermsCheckboxProps> = () => {
 
     const terms = contact.terms;
     const handleChange = (e: React.ChangeEvent) => {
-        setDirty(true);
         contact.actions.updateTerms((e.target as HTMLInputElement).checked)
     }
 
-    const handleBlur = (e: React.FocusEvent) => {
+    const handleBlur = (_: React.FocusEvent) => {
         setDirty(true);
     }
 

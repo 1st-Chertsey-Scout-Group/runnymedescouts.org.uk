@@ -16,7 +16,7 @@ export const ShopEmailTextbox: React.FC<ShopEmailTextboxProps> = () => {
         contact.actions.updateEmail((e.target as HTMLInputElement).value)
     }
 
-    const handleBlur = (e: React.FocusEvent) => {
+    const handleBlur = (_: React.FocusEvent) => {
         setDirty(true);
     }
 

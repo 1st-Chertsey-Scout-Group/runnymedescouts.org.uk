@@ -7,15 +7,14 @@ type ShopAdditionalInformationTextAreaProps = {
 export const ShopAdditionalInformationTextArea: React.FC<ShopAdditionalInformationTextAreaProps> = () => {
   const id = useId();
   const contact = useContact();
-  const [dirty, setDirty] = useState(false);
+  const [_, setDirty] = useState(false);
 
   const additionalInformation = contact.additionalInformation;
   const handleChange = (e: React.ChangeEvent) => {
-    setDirty(true);
     contact.actions.updateAdditionalInformation((e.target as HTMLInputElement).value)
   }
 
-  const handleBlur = (e: React.FocusEvent) => {
+  const handleBlur = (_: React.FocusEvent) => {
     setDirty(true);
   }
 

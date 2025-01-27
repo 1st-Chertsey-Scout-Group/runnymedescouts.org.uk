@@ -14,11 +14,10 @@ export const ShopNameTextbox: React.FC<ShopNameTextboxProps> = () => {
 
     const name = contact.name;
     const handleChange = (e: React.ChangeEvent) => {
-        setDirty(true);
         contact.actions.updateName((e.target as HTMLInputElement).value)
     }
 
-    const handleBlur = (e: React.FocusEvent) => {
+    const handleBlur = (_: React.FocusEvent) => {
         setDirty(true);
     }
 

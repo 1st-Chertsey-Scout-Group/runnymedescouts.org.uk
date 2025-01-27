@@ -52,11 +52,10 @@ export const ShopGroupUnitSelect: React.FC<ShopGroupUnitSelectProps> = ({ groups
 
     const groupUnitId = contact.groupUnitId;
     const handleChange = (e: React.ChangeEvent) => {
-        setDirty(true);
         contact.actions.updateGroupUnitId((e.target as HTMLSelectElement).value)
     }
 
-    const handleBlur = (e: React.FocusEvent) => {
+    const handleBlur = (_: React.FocusEvent) => {
         setDirty(true);
     }
 
@@ -141,11 +140,10 @@ export const ShopSectionSelect: React.FC<ShopSectionSelectProps> = ({ groupsAndU
     const sectionId = contact.sectionId;
     const groupUnitId = contact.groupUnitId;
     const handleChange = (e: React.ChangeEvent) => {
-        setDirty(true);
         contact.actions.updateSectionId((e.target as HTMLSelectElement).value)
     }
 
-    const handleBlur = (e: React.FocusEvent) => {
+    const handleBlur = (_: React.FocusEvent) => {
         setDirty(true);
     }
 
