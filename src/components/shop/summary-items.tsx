@@ -23,7 +23,7 @@ export const SummaryItems: React.FC<SummaryItemsProps> = ({ }) => {
                             <div
                                 className="flex items-center gap-4 justify-center"
                             >
-                                <span>
+                                <span className="text-danger font-bold">
                                     Your basket is empty. <a href="/shop">Return to the shop</a> to add items.
                                 </span>
                             </div>
