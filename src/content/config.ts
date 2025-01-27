@@ -85,6 +85,8 @@ const unitsCollection = defineCollection({
             enabled: z.boolean().default(true),
 
             address: getAddressSchema(),
+
+            sections: z.array(getGroupSectionsSchema(image))
         }).transform(values => ({
             ...values,
             get shortAddress(): string {

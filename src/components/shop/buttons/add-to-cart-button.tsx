@@ -1,7 +1,7 @@
 import { cn } from "basecamp/libs";
-import { useBasket } from "./state/basket.store";
+import { useBasket } from "../state/basket.store";
 import { ShoppingBasket } from "lucide-react";
-import { QuantitySelector } from "./quantity-selector";
+import { QuantitySelector } from "../quantity-selector";
 import { RemoveButton } from "./remove-button";
 
 type AddToCartButtonProps = {

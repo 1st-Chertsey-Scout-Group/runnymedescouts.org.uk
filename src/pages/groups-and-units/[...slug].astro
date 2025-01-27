@@ -5,7 +5,10 @@ import PageLayout from "@/layouts/page.layout.astro";
 import { cn } from "@/lib/utils";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { Block, GoogleMap } from "basecamp/components";
-import { Facebook, Globe, Mail } from "lucide-react";
+import { Globe, Mail } from "lucide-react";
+import { Image } from "astro:assets";
+
+import  Facebook  from "../../images/facebook.svg";
 
 export async function getStaticPaths() {
     const groupsCollection: CollectionEntry<"groups">[] =
@@ -88,8 +91,14 @@ const {
                                 class="text-icon-facebook hover:text-icon-hover"
                                 title={`${name}'s facebook page`}
                             >
-                                <Facebook
-                                    className="w-6 h-6"
+                                <Image
+                                    loading={"lazy"}
+                                    src={Facebook}
+                                    alt={"Facebook logo"}
+                                    width={64}
+                                    height={64}
+                                    quality={100}
+                                    class="w-6 h-6"
                                     aria-labelledby={slug + "-facebook"}
                                 />
                                 <span id={slug + "-facebook"} class="sr-only">

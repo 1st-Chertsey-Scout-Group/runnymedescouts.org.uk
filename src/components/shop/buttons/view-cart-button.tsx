@@ -1,5 +1,5 @@
 import { ShoppingBasket } from "lucide-react";
-import { useBasket } from "./state/basket.store";
+import { useBasket } from "../state/basket.store";
 
 type ViewCartButtonProps = {
 
