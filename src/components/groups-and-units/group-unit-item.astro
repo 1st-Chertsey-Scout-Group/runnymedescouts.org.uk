@@ -1,7 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import { Button } from "basecamp/components";
-import { Globe, Facebook, Mail, MapPinned, ArrowRight } from "lucide-react";
+import { Globe, Mail, MapPinned, ArrowRight } from "lucide-react";
+import  Facebook  from "../../images/facebook.svg";
 
 interface Props {
     type: "group" | "unit";
@@ -88,10 +89,17 @@ const {
                         class="text-icon-facebook hover:text-icon-hover"
                         title={`${name}'s facebook page`}
                     >
-                        <Facebook
-                            className="w-6 h-6"
+                        <Image
+                            loading={"lazy"}
+                            src={Facebook}
+                            alt={"Facebook logo"}
+                            width={64}
+                            height={64}
+                            quality={100}
+                            class="w-6 h-6"
                             aria-labelledby={slug + "-facebook"}
                         />
+
                         <span id={slug + "-facebook"} class="sr-only">
                             {name}'s facebook page
                         </span>

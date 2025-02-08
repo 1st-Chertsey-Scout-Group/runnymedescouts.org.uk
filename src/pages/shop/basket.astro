@@ -1,0 +1,235 @@
+---
+import {
+    SubmitOrderButton,
+    SubmitOrderButtonFallback,
+} from "@/components/shop/buttons/submit-order-button";
+import {
+    ShopAdditionalInformationTextArea,
+    ShopAdditionalInformationTextAreaFallback,
+} from "@/components/shop/fields/shop-additional-information-textarea";
+import {
+    ShopEmailTextbox,
+    ShopEmailTextboxFallback,
+} from "@/components/shop/fields/shop-email-textbox";
+import {
+    ShopGroupUnitSelect,
+    ShopGroupUnitSelectFallback,
+    ShopSectionSelect,
+    ShopSectionSelectFallback,
+    type GroupUnit,
+} from "@/components/shop/fields/shop-group-unit-section-selects";
+import {
+    ShopNameTextbox,
+    ShopNameTextboxFallback,
+} from "@/components/shop/fields/shop-name-textbox";
+import {
+    ShopTermsCheckbox,
+    ShopTermsCheckboxFallback,
+} from "@/components/shop/fields/shop-terms-checkbox";
+import {
+    ShopYoungPersonNameTextbox,
+    ShopYoungPersonNameTextboxFallback,
+} from "@/components/shop/fields/shop-young-person-name-textbox";
+import {
+    SummaryItems,
+    SummaryItemsFallback,
+} from "@/components/shop/summary-items";
+import { TotalPrice, TotalPriceFallback } from "@/components/shop/total-price";
+import ShopLayout from "@/layouts/shop.layout.astro";
+import { toKebabCase, toTitleCase } from "@/lib/utils";
+import { getCollection } from "astro:content";
+import { Block, Button, Seperator } from "basecamp/components";
+import { ArrowLeft } from "lucide-react";
+
+const groups = await getCollection("groups");
+const units = await getCollection("units");
+
+function formatSectionName(name: string, sectionId: string): string {
+    if (name.toLowerCase().indexOf(sectionId) == -1) {
+        return `${name} (${toTitleCase(sectionId)})`;
+    } else {
+        return name;
+    }
+}
+
+const groupsandUnits: GroupUnit[] = [
+    ...groups
+        .filter((g) => g.data.enabled)
+        .map((g) => {
+            const group: GroupUnit = {
+                type: "group",
+                id: g.slug,
+                name: g.data.name,
+                sections: g.data.sections.map((s) => {
+                    return {
+                        id: toKebabCase(s.name),
+                        name: formatSectionName(s.name, s.section.id),
+                    };
+                }),
+            };
+
+            return group;
+        }),
+    ...units
+        .filter((g) => g.data.enabled)
+        .map((g) => {
+            const unit: GroupUnit = {
+                type: "unit",
+                id: g.slug,
+                name: g.data.name,
+                sections: g.data.sections.map((s) => {
+                    return {
+                        id: toKebabCase(s.name),
+                        name: formatSectionName(s.name, s.section.id),
+                    };
+                }),
+            };
+
+            return unit;
+        }),
+];
+---
+
+<ShopLayout
+    title="Uniform Shop Basket"
+    description="Discover high-quality Scout uniforms and accessories at the Runnymede Scout District Uniform Shop. Affordable prices, official supplies, and friendly service to support your Scouting journey!"
+>
+    <Block.Wrapper id="basket" className="pt-0">
+        <Block.Seperator slot="seperator">
+            <Seperator loading="eager" />
+        </Block.Seperator>
+        <Block.Header slot="header" className="text-primary">
+            Your uniform request
+        </Block.Header>
+        <Block.SubHeader slot="subHeader" tag="p">
+            Please note that by submitting this form, you are <span
+                class="font-bold">requesting uniform items</span
+            >. This is not a purchase and requests are subject to stock
+            availability. No payment will be taken as part of the request.
+        </Block.SubHeader>
+        <Block.Body size="md" slot="body">
+            <section class="antialiased">
+                <form action="#" class="px-4 2xl:px-0">
+                    <div
+                        class="mt-6 space-y-4 border-b border-t border-alternative-dark py-8 sm:mt-8"
+                    >
+                        <div class="space-y-4">
+                            <h2 class="text-xl font-semibold">
+                                Contact Information
+                            </h2>
+
+                            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                <ShopNameTextbox client:only="react">
+                                    <ShopNameTextboxFallback slot="fallback" />
+                                </ShopNameTextbox>
+
+                                <ShopYoungPersonNameTextbox client:only="react">
+                                    <ShopYoungPersonNameTextboxFallback
+                                        slot="fallback"
+                                    />
+                                </ShopYoungPersonNameTextbox>
+                            </div>
+
+                            <div class="grid grid-cols-1 gap-4">
+                                <ShopEmailTextbox client:only="react">
+                                    <ShopEmailTextboxFallback slot="fallback" />
+                                </ShopEmailTextbox>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <h2 class="text-xl font-semibold">
+                                Order Information
+                            </h2>
+
+                            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                <ShopGroupUnitSelect
+                                    client:only="react"
+                                    groupsAndUnits={groupsandUnits}
+                                >
+                                    <ShopGroupUnitSelectFallback
+                                        slot="fallback"
+                                    />
+                                </ShopGroupUnitSelect>
+                                <ShopSectionSelect
+                                    client:only="react"
+                                    groupsAndUnits={groupsandUnits}
+                                >
+                                    <ShopSectionSelectFallback
+                                        slot="fallback"
+                                    />
+                                </ShopSectionSelect>
+                            </div>
+
+                            <div class="grid grid-cols-1 gap-4">
+                                <ShopAdditionalInformationTextArea
+                                    client:only="react"
+                                >
+                                    <ShopAdditionalInformationTextAreaFallback
+                                        slot="fallback"
+                                    /></ShopAdditionalInformationTextArea
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <div
+                            class="relative overflow-x-auto border-b border-alternative-dark"
+                        >
+                            <SummaryItems client:only="react">
+                                <SummaryItemsFallback slot="fallback" />
+                            </SummaryItems>
+                        </div>
+
+                        <div class="mt-4 space-y-6">
+                            <div class="space-y-4">
+                                <div class="space-y-2">
+                                    <dl
+                                        class="flex items-center justify-end gap-4 px-4"
+                                    >
+                                        <dt class="text-base font-bold">
+                                            Total
+                                        </dt>
+                                        <dd class="text-base font-bold">
+                                            <TotalPrice client:only="react">
+                                                <TotalPriceFallback
+                                                    slot="fallback"
+                                                />
+                                            </TotalPrice>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+
+                            <div class="space-y-4">
+                                <ShopTermsCheckbox client:only="react">
+                                    <ShopTermsCheckboxFallback
+                                        slot="fallback"
+                                    />
+                                </ShopTermsCheckbox>
+                            </div>
+
+                            <div class="gap-4 sm:flex sm:items-center">
+                                <a href="/shop" class="w-full">
+                                    <Button
+                                        Icon={ArrowLeft}
+                                        text="Return to Shop"
+                                        type="button"
+                                        variant="link"
+                                        iconClassName="order-first"
+                                    />
+                                </a>
+
+                                <SubmitOrderButton client:only="react">
+                                    <SubmitOrderButtonFallback
+                                        slot="fallback"
+                                    />
+                                </SubmitOrderButton>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </Block.Body>
+    </Block.Wrapper>
+</ShopLayout>

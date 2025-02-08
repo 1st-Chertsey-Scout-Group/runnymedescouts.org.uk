@@ -1,0 +1,132 @@
+---
+import ShopLayout from "@/layouts/shop.layout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import { Block, Seperator } from "basecamp/components";
+import { Clock, Package } from "lucide-react";
+import { Image } from "astro:assets";
+import {
+    AddToCartButton,
+    AddToCartButtonFallback,
+} from "@/components/shop/buttons/add-to-cart-button";
+import { formatPrice } from "@/lib/utils";
+
+export async function getStaticPaths() {
+    const tagsCollection: CollectionEntry<"shopTags">[] =
+        await getCollection("shopTags");
+    return tagsCollection.map((item) => ({
+        params: { tag: item.slug },
+        props: item,
+    }));
+}
+type Props = CollectionEntry<"shopTags">;
+
+const tag = Astro.props;
+const { Content } = await tag.render();
+
+const slug = tag.slug;
+const { name } = tag.data;
+
+const products = (await getCollection("shopProducts"))
+    .filter((product) => product.data.tags.some((tag) => tag.id == slug))
+    .sort((a, b) => {
+        if (a.data.order !== b.data.order) {
+            return a.data.order - b.data.order;
+        }
+        return a.data.name.localeCompare(b.data.name);
+    });
+---
+
+<ShopLayout title={name}>
+    <Block.Wrapper id="shop" className="pt-0">
+        <Block.Seperator slot="seperator">
+            <Seperator loading="eager" />
+        </Block.Seperator>
+        <Block.Header slot="header" className="text-primary">
+            {name} Uniform
+        </Block.Header>
+        <Block.SubHeader slot="subHeader" tag="div">
+            <Content />
+        </Block.SubHeader>
+        <Block.Body size="xl" slot="body">
+            <section class="py-8 antialiased md:py-12">
+                <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+                    <div
+                        class="mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4"
+                    >
+                        {
+                            products &&
+                                products.map((product) => (
+                                    <div class="p-6">
+                                        <div>
+                                            <a href="#">
+                                                <Image
+                                                    src={product.data.images[0]}
+                                                    alt={product.data.name}
+                                                    width={512}
+                                                    height={512}
+                                                    quality={100}
+                                                    class="mx-auto mb-4 w-56 h-56 sm:h-auto sm:w-auto rounded-2xl"
+                                                />
+                                            </a>
+                                        </div>
+                                        <div class="pt-6">
+                                            <a
+                                                href="#"
+                                                class="text-lg font-semibold leading-tight hover:underline truncate text-ellipsis"
+                                            >
+                                                {product.data.name}
+                                            </a>
+
+                                            <ul class="mt-2 flex items-center gap-4">
+                                                {product.data.stocked && (
+                                                    <li class="flex items-center gap-2">
+                                                        <Package
+                                                            className={
+                                                                "w-5 h-5 transition-transform duration-100"
+                                                            }
+                                                        />
+                                                        <p class="text-sm font-medium">
+                                                            Stocked Item
+                                                        </p>
+                                                    </li>
+                                                )}
+
+                                                {!product.data.stocked && (
+                                                    <li class="flex items-center gap-2">
+                                                        <Clock
+                                                            className={
+                                                                "w-5 h-5 transition-transform duration-100"
+                                                            }
+                                                        />
+                                                        <p class="text-sm font-medium">
+                                                            To-Order Item
+                                                        </p>
+                                                    </li>
+                                                )}
+                                            </ul>
+
+                                            <div class="mt-4 flex flex-col gap-4">
+                                                <p class="text-2xl font-extrabold leading-tight">
+                                                    {formatPrice(
+                                                        product.data.price,
+                                                    )}
+                                                </p>
+                                                <div class="flex-1">
+                                                    <AddToCartButton
+                                                        client:only="react"
+                                                        productId={product.slug}
+                                                    >
+                                                        <AddToCartButtonFallback slot="fallback" />
+                                                    </AddToCartButton>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))
+                        }
+                    </div>
+                </div>
+            </section>
+        </Block.Body>
+    </Block.Wrapper>
+</ShopLayout>

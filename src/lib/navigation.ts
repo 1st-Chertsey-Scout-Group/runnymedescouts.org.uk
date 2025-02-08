@@ -17,6 +17,11 @@ export const HEADER_LINKS: NavigationLink[] = [
         target: "_self"
     },
     {
+        text: "Uniform Shop",
+        url: "/shop",
+        target: "_self"
+    },
+    {
         text: "Contact",
         url: "/contact",
         target: "_self"

@@ -14,4 +14,11 @@ address:
   postalCode: KT15 3AS
   longitude: -0.4914815074081979
   latitude: 51.34845920063433
+sections:
+- name: Explorers
+  meetingDay: Friday
+  meetingEndTime: '19:00'
+  meetingStartTime: '21:00'  
+  section: explorers
+  image: "./sections/explorers.png"
 ---

@@ -14,4 +14,11 @@ address:
   postalCode: KT16 8PS
   longitude: -0.5070012642393464
   latitude: 51.39740622303463
+sections:
+- name: Explorers
+  meetingDay: Friday
+  meetingEndTime: '19:00'
+  meetingStartTime: '21:00'  
+  section: explorers
+  image: "./sections/explorers.png"
 ---

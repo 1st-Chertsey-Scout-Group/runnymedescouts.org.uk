@@ -85,6 +85,8 @@ const unitsCollection = defineCollection({
             enabled: z.boolean().default(true),
 
             address: getAddressSchema(),
+
+            sections: z.array(getGroupSectionsSchema(image))
         }).transform(values => ({
             ...values,
             get shortAddress(): string {
@@ -109,10 +111,37 @@ const eventsCollection = defineCollection({
         }),
 });
 
+const shopProductsCollection = defineCollection({
+    type: "content",
+    schema: ({ image }) =>
+        z.object({
+            name: z.string(),
+            price: z.number(),
+            stocked: z.boolean(),
+            tags: z.array(reference("shopTags")),
+            images: z.array(image()),
+            order: z.number()
+        }),
+});
+
+const shopTagsCollection = defineCollection({
+    type: "content",
+    schema: ({ image }) =>
+        z.object({
+            name: z.string(),
+            type: z.enum(["section", "uniform", "misc"]),
+            visible: z.boolean(),
+            image: image(),
+            order: z.number()
+        }),
+});
+
 export type GroupSection = z.infer<ReturnType<typeof getGroupSectionsSchema>>
 export const collections = {
     groups: groupsCollection,
     units: unitsCollection,
     events: eventsCollection,
-    sections: sectionsCollection
+    sections: sectionsCollection,
+    shopProducts: shopProductsCollection,
+    shopTags: shopTagsCollection
 };
