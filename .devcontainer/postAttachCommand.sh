@@ -1,0 +1,1 @@
+for i in $(seq 4321 4320); do fuser -k $1/tcp; done

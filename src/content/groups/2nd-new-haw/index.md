@@ -3,8 +3,8 @@ name: 2nd New Haw
 mapLink: https://maps.app.goo.gl/HFHZv3GvRrgcPVsf9
 image: "./image.png"
 contact: ''
-facebook: ''
-website: ''
+facebook: 'https://www.facebook.com/2ndnewhawscouts'
+website: 'https://www.2ndnewhawscouts.org.uk'
 address:
   name: 2nd New Haw Scout Group
   street: Heathervale Way

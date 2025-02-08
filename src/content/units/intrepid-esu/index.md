@@ -3,7 +3,7 @@ name: Intrepid ESU
 mapLink: https://maps.app.goo.gl/fmUySi4FDaYXk5to7
 image: "./image.png"
 contact: ''
-facebook: ''
+facebook: 'https://www.facebook.com/groups/runnymedeexplorers/'
 website: ''
 address:
   name: 1st Chertsey Scout HQ

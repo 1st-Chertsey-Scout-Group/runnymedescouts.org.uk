@@ -3,7 +3,7 @@ name: Phoenix ESU
 mapLink: https://maps.app.goo.gl/HFHZv3GvRrgcPVsf9
 image: "./image.png"
 contact: ''
-facebook: ''
+facebook: 'https://www.facebook.com/groups/runnymedeexplorers/'
 website: ''
 address:
   name: 2nd New Haw Scout Group
