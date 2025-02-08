@@ -3,7 +3,7 @@ name: Endeavour ESU
 mapLink: https://maps.app.goo.gl/EUAVLayrMN3A53CN6
 image: "./image.png"
 contact: ''
-facebook: ''
+facebook: 'https://www.facebook.com/groups/runnymedeexplorers/'
 website: ''
 address:
   name: 1st Englefield Green Scout Group
