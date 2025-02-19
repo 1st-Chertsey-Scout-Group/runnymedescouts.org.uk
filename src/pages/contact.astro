@@ -1,0 +1,146 @@
+---
+export const prerender = false;
+import Seperator from "@/components/seperator.astro";
+import { Block, Button, Form } from "basecamp/components";
+import PageLayout from "@/layouts/page.layout.astro";
+import {
+    getFormData,
+    getOptions,
+    sendEnquiryEmail,
+    isFormDataValid,
+} from "@/code/contact";
+import { ArrowLeft } from "lucide-react";
+
+import {
+    SMTP_HOST,
+    SMTP_PASSWORD,
+    SMTP_PORT,
+    SMTP_ALIAS,
+    SMTP_DOMAIN,
+} from "astro:env/server";
+
+let response: "form" | "success" | "error" = "form";
+
+let options = await getOptions();
+
+if (Astro.request.method === "POST") {
+    const formData = getFormData(await Astro.request.formData(), options);
+
+    if (isFormDataValid(formData)) {
+        response = "success";
+        sendEnquiryEmail(formData, {
+            SMTP_HOST,
+            SMTP_PASSWORD,
+            SMTP_PORT,
+            SMTP_ALIAS,
+            SMTP_DOMAIN,
+        })
+            .then((v) => {
+                console.log(v.response);
+            })
+            .catch((e) => {
+                console.error(e);
+            });
+    } else {
+        response = "error";
+    }
+}
+---
+
+<PageLayout
+    title="Contact Runnymede | Get Involved in Scouting Today"
+    description="Get in touch with Runnymede. Whether you have questions about joining, events, or volunteering, our contact page provides all the information you need to reach out and connect with us."
+>
+    <Block.Wrapper id="contact">
+        <Block.Seperator slot="seperator">
+            <Seperator loading="eager" />
+        </Block.Seperator>
+        <Block.Header slot="header" className="text-primary">
+            {response == "success" && <>We have your message</>}
+            {response == "error" && <>Something went wrong</>}
+            {response == "form" && <>Contact Us</>}
+        </Block.Header>
+        <Block.SubHeader slot="subHeader" tag="p">
+            {
+                response == "success" && (
+                    <>
+                        Thank you for reaching out, we will get back to you as
+                        soon as possible
+                    </>
+                )
+            }
+            {
+                response == "error" && (
+                    <>
+                        We encountered an issue while processing your request.
+                        Please try again later, and we appreciate your patience.
+                    </>
+                )
+            }
+            {
+                response == "form" && (
+                    <>
+                        If you want to get involved with Scouting as a volunteer
+                        or gain skills for life as a Squirrel, Beaver, Cub,
+                        Scout or Explorer, or if you have any other questions
+                        about scouting in Runnymede, get in contact with us!
+                    </>
+                )
+            }
+        </Block.SubHeader>
+        <Block.Body size="md" slot="body">
+            {
+                (response == "error" || response == "success") && (
+                    <a href="/contact">
+                        <Button
+                            Icon={ArrowLeft}
+                            type="button"
+                            text="Submit another enquiry"
+                            iconClassName="order-first"
+                        />
+                    </a>
+                )
+            }
+            {
+                response == "form" && (
+                    <Form.Wrapper
+                        name="contact"
+                        action=""
+                        method="POST"
+                        button="Send Message"
+                    >
+                        <Form.TextBox
+                            id="email"
+                            type="email"
+                            label="Email"
+                            placeholder="bear.grylls@scouts.org.uk"
+                            required={true}
+                        />
+
+                        <Form.TextBox
+                            id="name"
+                            type="text"
+                            label="Name"
+                            placeholder="Bear Grylls"
+                            required={true}
+                        />
+
+                        <Form.Select
+                            id="subject"
+                            label="Subject"
+                            required={true}
+                            options={options}
+                        />
+
+                        <Form.TextArea
+                            id="message"
+                            label="Message"
+                            placeholder="Leave a comment..."
+                            required={true}
+                        />
+                    </Form.Wrapper>
+                )
+            }
+        </Block.Body>
+    </Block.Wrapper>
+</PageLayout>

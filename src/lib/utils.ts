@@ -14,6 +14,11 @@ export function slugify(str: string) {
     return str;
 }
 
+export function isValidEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
 export function formatPrice(price: number) {
     return `£${price.toFixed(2)}`;
 }

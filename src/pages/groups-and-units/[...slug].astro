@@ -6,9 +6,10 @@ import { cn } from "@/lib/utils";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { Block, GoogleMap } from "basecamp/components";
 import { Globe, Mail } from "lucide-react";
+import { GOOGLE_MAPS_API_KEY } from "astro:env/client";
 import { Image } from "astro:assets";
 
-import  Facebook  from "../../images/facebook.svg";
+import Facebook from "../../images/facebook.svg";
 
 export async function getStaticPaths() {
     const groupsCollection: CollectionEntry<"groups">[] =
@@ -53,7 +54,7 @@ const {
             <GoogleMap
                 longitude={longitude}
                 latitude={latitude}
-                apiKey={import.meta.env.GOOGLE_MAPS_API_KEY}
+                apiKey={GOOGLE_MAPS_API_KEY}
             />
         </Block.Body>
     </Block.Wrapper>
