@@ -13,3 +13,8 @@ export function slugify(str: string) {
         .replace(/-+/g, '-'); // remove consecutive hyphens
     return str;
 }
+
+export function isValidEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
