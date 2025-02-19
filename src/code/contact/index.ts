@@ -2,7 +2,7 @@ import { sendEmail } from "@/code/email";
 import { isValidEmail } from "@/lib/utils";
 import { getCollection, type CollectionEntry } from "astro:content";
 import type { OptionGroup, Option } from "basecamp/models";
-import { createTransport, type SentMessageInfo } from 'nodemailer';
+import { type SentMessageInfo } from 'nodemailer';
 
 
 export async function getOptions(): Promise<(Option | OptionGroup)[]> {
