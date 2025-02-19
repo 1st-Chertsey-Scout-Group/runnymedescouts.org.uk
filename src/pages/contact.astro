@@ -1,16 +1,13 @@
 ---
 export const prerender = false;
-
-import ContactForm from "@/components/contact/contact-form.astro";
 import Seperator from "@/components/seperator.astro";
-import { Block, Button } from "basecamp/components";
+import { Block, Button, Form } from "basecamp/components";
 import PageLayout from "@/layouts/page.layout.astro";
 import {
     getFormData,
     getOptions,
     sendEnquiryEmail,
     isFormDataValid,
-    getOptionFromId,
 } from "@/code/contact";
 import { ArrowLeft } from "lucide-react";
 
