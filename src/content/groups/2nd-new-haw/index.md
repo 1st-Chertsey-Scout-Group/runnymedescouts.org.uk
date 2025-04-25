@@ -18,29 +18,29 @@ charityNumber: 273302
 sections:
 - name: Beavers
   meetingDay: Monday
-  meetingEndTime: '19:30'
   meetingStartTime: '18:15'
+  meetingEndTime: '19:30'
   section: beavers
   image: "./sections/beavers.png"
 
 - name: Badgers
   meetingDay: Thursday
-  meetingEndTime: '20:30'
-  meetingStartTime: '19:00'  
+  meetingStartTime: '19:00'
+  meetingEndTime: '20:30'  
   section: cubs
   image: "./sections/badgers.png"
 
 - name: Panthers
   meetingDay: Tuesday
-  meetingEndTime: '20:30'
-  meetingStartTime: '19:00'  
+  meetingStartTime: '19:00'
+  meetingEndTime: '20:30'  
   section: cubs
   image: "./sections/panthers.png"
 
 - name: Scouts
   meetingDay: Friday
-  meetingEndTime: '21:00'
-  meetingStartTime: '19:00'  
+  meetingStartTime: '19:00'
+  meetingEndTime: '21:00'  
   section: scouts
   image: "./sections/scouts.png"
 ---

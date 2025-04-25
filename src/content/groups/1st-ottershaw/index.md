@@ -18,29 +18,29 @@ charityNumber: 3997492
 sections:
 - name: Beavers
   meetingDay: Monday
-  meetingEndTime: '18:00'
-  meetingStartTime: '19:00'  
+  meetingStartTime: '18:00'
+  meetingEndTime: '19:00'  
   section: beavers
   image: "./sections/beavers.png"
 
 - name: Otters
   meetingDay: Tuesday
-  meetingEndTime: '18:30'
-  meetingStartTime: '20:00'  
+  meetingStartTime: '18:30'
+  meetingEndTime: '20:00'  
   section: cubs
   image: "./sections/otters.png"
 
 - name: Foxes
   meetingDay: Wednesday
-  meetingEndTime: '18:30'
-  meetingStartTime: '20:00'  
+  meetingStartTime: '18:30'
+  meetingEndTime: '20:00'  
   section: cubs
   image: "./sections/foxes.png"
 
 - name: Scouts
   meetingDay: Monday
-  meetingEndTime: '19:30'
-  meetingStartTime: '21:00'  
+  meetingStartTime: '19:30'
+  meetingEndTime: '21:00'  
   section: scouts
   image: "./sections/scouts.png"
 ---

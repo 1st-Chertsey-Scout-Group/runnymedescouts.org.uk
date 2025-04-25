@@ -18,15 +18,15 @@ charityNumber: 293330
 sections:
 - name: Beavers
   meetingDay: Wednesday
-  meetingEndTime: '19:30'
-  meetingStartTime: '18:00'  
+  meetingStartTime: '18:00'
+  meetingEndTime: '19:30'  
   section: beavers
   image: "./sections/beavers.png"
 
 - name: Cubs
   meetingDay: Thursday
-  meetingEndTime: '20:00'
-  meetingStartTime: '18:30'  
+  meetingStartTime: '18:30'
+  meetingEndTime: '20:00'  
   section: cubs
   image: "./sections/cubs.png"
 ---

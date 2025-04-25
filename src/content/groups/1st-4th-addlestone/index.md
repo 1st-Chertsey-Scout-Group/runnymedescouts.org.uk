@@ -18,36 +18,36 @@ charityNumber: 279333
 sections:
 - name: Spinney Beavers
   meetingDay: Thursday
-  meetingEndTime: '19:15'
-  meetingStartTime: '18:00'  
+  meetingStartTime: '18:00'
+  meetingEndTime: '19:15'  
   section: beavers
   image: "./sections/spinney-beavers.png"
 
 - name: Woodland Beavers
   meetingDay: Tuesday
-  meetingEndTime: '19:15'
   meetingStartTime: '18:00'
+  meetingEndTime: '19:15'
   section: beavers
   image: "./sections/woodland-beavers.png"
 
 - name: Tigers
   meetingDay: Monday
-  meetingEndTime: '20:30'
   meetingStartTime: '19:00'
+  meetingEndTime: '20:30'
   section: cubs
   image: "./sections/tigers.png"
 
 - name: Lions
   meetingDay: Wednesday
-  meetingEndTime: '20:30'
   meetingStartTime: '19:00'
+  meetingEndTime: '20:30'
   section: cubs
   image: "./sections/lions.png"
 
 - name: Scouts
   meetingDay: Friday
-  meetingEndTime: '21:00'
-  meetingStartTime: '19:00'  
+  meetingStartTime: '19:00'
+  meetingEndTime: '21:00'  
   section: scouts
   image: "./sections/scouts.png"
 ---

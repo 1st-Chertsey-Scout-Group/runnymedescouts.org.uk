@@ -18,22 +18,22 @@ charityNumber: 1100646
 sections:
 - name: Beavers
   meetingDay: Tuesday
-  meetingEndTime: '19:30'
-  meetingStartTime: '18:00'  
+  meetingStartTime: '18:00'
+  meetingEndTime: '19:30'  
   section: beavers
   image: "./sections/beavers.png"
 
 - name: Cubs
   meetingDay: Monday
-  meetingEndTime: '20:00'
-  meetingStartTime: '18:30'  
+  meetingStartTime: '18:30'
+  meetingEndTime: '20:00'  
   section: cubs
   image: "./sections/cubs.png"
 
 - name: Scouts
   meetingDay: Thursday
-  meetingEndTime: '21:00'
-  meetingStartTime: '19:30'  
+  meetingStartTime: '19:30'
+  meetingEndTime: '21:00'  
   section: scouts
   image: "./sections/scouts.png"
 ---
