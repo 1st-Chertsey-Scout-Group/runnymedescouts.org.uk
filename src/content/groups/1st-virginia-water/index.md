@@ -35,14 +35,14 @@ sections:
   meetingEndTime: '20:00'
   meetingStartTime: '18:30'  
   section: cubs
-  image: "./sections/cubs.png"
+  image: "./sections/lions.png"
 
 - name: Wolves
   meetingDay: Monday
   meetingEndTime: '20:00'
   meetingStartTime: '18:30'  
   section: cubs
-  image: "./sections/cubs.png"
+  image: "./sections/wolves.png"
 
 - name: Scouts
   meetingDay: Thursday
