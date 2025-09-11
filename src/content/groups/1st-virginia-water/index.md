@@ -16,14 +16,28 @@ address:
   latitude: 51.403038215611275
 charityNumber: 1100646
 sections:
+- name: Squirrels
+  meetingDay: Wednesday
+  meetingEndTime: '18:00'
+  meetingStartTime: '17:00'  
+  section: squirrels
+  image: "./sections/squirrels.png"
+
 - name: Beavers
   meetingDay: Tuesday
   meetingEndTime: '19:30'
-  meetingStartTime: '18:00'  
+  meetingStartTime: '18:15'  
   section: beavers
   image: "./sections/beavers.png"
 
-- name: Cubs
+- name: Lions
+  meetingDay: Friday
+  meetingEndTime: '20:00'
+  meetingStartTime: '18:30'  
+  section: cubs
+  image: "./sections/cubs.png"
+
+- name: Wolves
   meetingDay: Monday
   meetingEndTime: '20:00'
   meetingStartTime: '18:30'  
@@ -33,7 +47,7 @@ sections:
 - name: Scouts
   meetingDay: Thursday
   meetingEndTime: '21:00'
-  meetingStartTime: '19:30'  
+  meetingStartTime: '19:00'  
   section: scouts
   image: "./sections/scouts.png"
 ---
