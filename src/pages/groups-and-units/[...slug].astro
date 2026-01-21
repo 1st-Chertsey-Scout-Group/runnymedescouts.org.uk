@@ -30,6 +30,7 @@ const {
     address: { longitude, latitude },
     sections,
     charityNumber,
+    waitlistUrl
 } = group.data;
 ---
 
@@ -57,6 +58,11 @@ const {
     </Block.Wrapper>
 
     <Block.Wrapper id="socials">
+        <Block.SubHeader slot="subHeader" tag="p">
+            {
+                waitlistUrl && (<>There is a waitlist for new members. <a href={waitlistUrl}>Click here to join the waitlist</a></>)
+            }
+        </Block.SubHeader>
         <Block.Body slot="body" size="sm" className="mb-0 lg:mb-0">
             <ul class="flex justify-center space-x-4">
                 {

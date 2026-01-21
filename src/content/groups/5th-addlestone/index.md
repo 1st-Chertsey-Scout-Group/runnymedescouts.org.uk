@@ -5,6 +5,7 @@ image: "./image.png"
 contact: ''
 facebook: ''
 website: ''
+waitlistUrl: 'https://www.onlinescoutmanager.co.uk/waiting-list/5th-addlestone-scout-group-waiting-list/415d215e-1e0e-4cf5-b055-10bfeb66ca7e/apply'
 address:
   name: Methodist Church
   street: Station Road
